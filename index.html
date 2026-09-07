@@ -1,0 +1,201 @@
+<!doctype html><html lang="ko"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>오늘의 장바구니 — 이거 지금 사도 될까?</title>
+<meta name="description" content="배추·계란·사과 등 10개 식재료의 오늘 가격과 예년 같은 때 대비 비교. 2026-09-07 기준. 매일 갱신.">
+<link rel="canonical" href="https://foodprice.pages.dev/">
+<meta property="og:title" content="오늘의 장바구니 — 이거 지금 사도 될까?">
+<meta property="og:description" content="배추·계란·사과 등 10개 식재료의 오늘 가격과 예년 같은 때 대비 비교. 2026-09-07 기준. 매일 갱신.">
+<meta property="og:url" content="https://foodprice.pages.dev/">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{--ink:#111827;--muted:#6b7280;--line:#e9ecef;--bg:#fff;--soft:#f7f8fa;
+      --brand:#6d28d9;--radius:14px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--soft);color:var(--ink);
+     font:15px/1.6 Pretendard,-apple-system,'Malgun Gothic',sans-serif;
+     -webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:560px;margin:0 auto;padding:0 16px 72px;background:var(--bg);
+      min-height:100vh}
+header{padding:22px 0 14px}
+.brand{font-size:19px;font-weight:700;letter-spacing:-.03em}
+.tag{color:var(--muted);font-size:13px;margin-top:2px}
+.asof{color:var(--muted);font-size:12px;margin-top:10px}
+input[type=search]{width:100%;padding:12px 14px;border:1px solid var(--line);
+  border-radius:12px;font:inherit;background:var(--soft);margin:14px 0 10px}
+input[type=search]:focus{outline:none;border-color:var(--brand);background:#fff}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:12px;
+  scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;padding:7px 13px;border:1px solid var(--line);
+  border-radius:999px;font-size:13px;color:var(--muted);background:#fff;
+  cursor:pointer}
+.chip.on{background:var(--brand);border-color:var(--brand);color:#fff;
+  font-weight:600}
+/* 이름과 값을 한 줄에, 신호는 아랫줄에 통째로 둔다.
+   신호를 값 옆에 붙이면 '아주 비쌈 +37%' 같은 긴 글자가 폭을 밀어내
+   오른쪽이 잘린다. 줄을 나누면 그 싸움 자체가 없어진다. */
+.row{display:block;padding:13px 2px;border-bottom:1px solid var(--line)}
+.row .top{display:flex;align-items:baseline;gap:10px}
+.row .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap}
+.row .n1{font-weight:600;letter-spacing:-.01em}
+.row .n2{color:var(--muted);font-size:12.5px;margin-left:5px}
+.row .p1{flex:0 0 auto;font-weight:700;font-variant-numeric:tabular-nums;
+  letter-spacing:-.02em}
+.row .p2{display:block;font-size:12.5px;margin-top:3px;font-weight:600}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;
+  margin-right:5px;vertical-align:1px}
+.empty{color:var(--muted);text-align:center;padding:40px 0}
+.preview{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;
+  border-radius:10px;padding:11px 13px;font-size:12.5px;margin:14px 0 0;
+  line-height:1.5}
+.preview b{font-weight:700}
+/* 상세 */
+.back{display:inline-block;color:var(--muted);font-size:13px;padding:18px 0 6px}
+h1{font-size:22px;margin:4px 0 2px;letter-spacing:-.03em}
+.unit{color:var(--muted);font-size:13px;margin-bottom:18px}
+.big{font-size:38px;font-weight:800;letter-spacing:-.04em;
+  font-variant-numeric:tabular-nums}
+.verdict{font-size:15px;margin:10px 0 4px;font-weight:600}
+.detail{color:var(--muted);font-size:13.5px}
+.card{background:var(--soft);border:1px solid var(--line);
+  border-radius:var(--radius);padding:16px;margin:20px 0}
+.spark{width:100%;height:190px;display:block}
+.axis{display:flex;justify-content:space-between;color:var(--muted);
+  font-size:11.5px;margin-top:-6px}
+.facts{display:flex;gap:10px;margin:18px 0}
+.fact{flex:1;background:var(--soft);border:1px solid var(--line);
+  border-radius:var(--radius);padding:13px}
+.fact .k{color:var(--muted);font-size:12px}
+.fact .v{font-weight:700;margin-top:3px;font-variant-numeric:tabular-nums}
+.cta{display:block;text-align:center;background:var(--brand);color:#fff;
+  padding:15px;border-radius:12px;font-weight:700;margin-top:8px}
+.note{color:var(--muted);font-size:11.5px;margin-top:12px;line-height:1.55}
+footer{color:var(--muted);font-size:11.5px;padding:26px 0 0;
+  border-top:1px solid var(--line);margin-top:26px}
+</style></head><body><div class="wrap">
+<header>
+  <div class="brand">오늘의 장바구니</div>
+  <div class="tag">이거 지금 사도 될까? 예년 같은 때와 견줘 알려드려요.</div>
+  <div class="asof">2026-09-07 조사 기준 · 출처 농산물유통정보(KAMIS)</div>
+  <div class="preview"><b>데이터 연동 준비 중입니다.</b> 화면에 보이는 값은 화면 확인용 <b>예시</b>이며 실제 시세가 아닙니다. 농산물유통정보(KAMIS) 연동이 끝나면 실제 조사값으로 바뀝니다.</div>
+</header>
+<input type="search" id="q" placeholder="품목 검색 (배추, 계란…)" autocomplete="off">
+<div class="chips"><button class="chip on" data-c="">전체</button><button class="chip" data-c="곡물">곡물</button><button class="chip" data-c="과일">과일</button><button class="chip" data-c="수산">수산</button><button class="chip" data-c="양념">양념</button><button class="chip" data-c="채소">채소</button><button class="chip" data-c="축산">축산</button></div>
+<div id="list"><a class="row" href="rice/" data-c="곡물"
+   data-n="쌀">
+  <span class="top">
+    <span class="nm"><span class="n1">쌀</span><span
+      class="n2">20kg</span></span>
+    <span class="p1">54,423원</span>
+  </span>
+  <span class="p2" style="color:#6b7280"><i class="dot"
+    style="background:#6b7280"></i>보통 -1%</span>
+</a><a class="row" href="pear/" data-c="과일"
+   data-n="배">
+  <span class="top">
+    <span class="nm"><span class="n1">배</span><span
+      class="n2">10개</span></span>
+    <span class="p1">22,070원</span>
+  </span>
+  <span class="p2" style="color:#6b7280"><i class="dot"
+    style="background:#6b7280"></i>보통 -7%</span>
+</a><a class="row" href="apple/" data-c="과일"
+   data-n="사과">
+  <span class="top">
+    <span class="nm"><span class="n1">사과</span><span
+      class="n2">10개</span></span>
+    <span class="p1">27,677원</span>
+  </span>
+  <span class="p2" style="color:#d97706"><i class="dot"
+    style="background:#d97706"></i>비싼 편 +21%</span>
+</a><a class="row" href="mackerel/" data-c="수산"
+   data-n="고등어">
+  <span class="top">
+    <span class="nm"><span class="n1">고등어</span><span
+      class="n2">1마리</span></span>
+    <span class="p1">4,087원</span>
+  </span>
+  <span class="p2" style="color:#6b7280"><i class="dot"
+    style="background:#6b7280"></i>보통 +6%</span>
+</a><a class="row" href="chili-powder/" data-c="양념"
+   data-n="고춧가루">
+  <span class="top">
+    <span class="nm"><span class="n1">고춧가루</span><span
+      class="n2">1kg</span></span>
+    <span class="p1">32,138원</span>
+  </span>
+  <span class="p2" style="color:#6b7280"><i class="dot"
+    style="background:#6b7280"></i>보통 +2%</span>
+</a><a class="row" href="green-onion/" data-c="채소"
+   data-n="대파">
+  <span class="top">
+    <span class="nm"><span class="n1">대파</span><span
+      class="n2">1kg</span></span>
+    <span class="p1">3,106원</span>
+  </span>
+  <span class="p2" style="color:#12946f"><i class="dot"
+    style="background:#12946f"></i>싼 편 -19%</span>
+</a><a class="row" href="radish/" data-c="채소"
+   data-n="무">
+  <span class="top">
+    <span class="nm"><span class="n1">무</span><span
+      class="n2">1개</span></span>
+    <span class="p1">2,754원</span>
+  </span>
+  <span class="p2" style="color:#d97706"><i class="dot"
+    style="background:#d97706"></i>비싼 편 +14%</span>
+</a><a class="row" href="napa-cabbage/" data-c="채소"
+   data-n="배추">
+  <span class="top">
+    <span class="nm"><span class="n1">배추</span><span
+      class="n2">1포기</span></span>
+    <span class="p1">6,611원</span>
+  </span>
+  <span class="p2" style="color:#dc2626"><i class="dot"
+    style="background:#dc2626"></i>아주 비쌈 +37%</span>
+</a><a class="row" href="egg/" data-c="축산"
+   data-n="계란">
+  <span class="top">
+    <span class="nm"><span class="n1">계란</span><span
+      class="n2">30개</span></span>
+    <span class="p1">9,640원</span>
+  </span>
+  <span class="p2" style="color:#dc2626"><i class="dot"
+    style="background:#dc2626"></i>아주 비쌈 +32%</span>
+</a><a class="row" href="pork-belly/" data-c="축산"
+   data-n="삼겹살">
+  <span class="top">
+    <span class="nm"><span class="n1">삼겹살</span><span
+      class="n2">100g</span></span>
+    <span class="p1">2,806원</span>
+  </span>
+  <span class="p2" style="color:#6b7280"><i class="dot"
+    style="background:#6b7280"></i>보통 +8%</span>
+</a></div>
+<div class="empty" id="none" hidden>찾는 품목이 없어요.</div>
+<footer>
+  가격은 농산물유통정보(KAMIS)의 소매 조사값입니다. 실제 판매가와 다를 수 있어요.<br>
+  이 사이트는 쿠팡 파트너스 활동의 일환으로 수수료를 제공받을 수 있습니다.
+</footer>
+</div>
+<script>
+const $=s=>document.querySelector(s), rows=[...document.querySelectorAll('.row')];
+let cat="", q="";
+function apply(){
+  let shown=0;
+  rows.forEach(r=>{
+    const ok=(!cat||r.dataset.c===cat)&&(!q||r.dataset.n.includes(q));
+    r.hidden=!ok; if(ok) shown++;
+  });
+  $('#none').hidden = shown>0;
+}
+$('#q').addEventListener('input',e=>{q=e.target.value.trim();apply();});
+document.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); cat=b.dataset.c; apply();
+});
+</script></body></html>
