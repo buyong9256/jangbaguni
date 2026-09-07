@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://buyong9256.github.io/foodprice-site/sitemap.xml
+Sitemap: https://buyong9256.github.io/jangbaguni/sitemap.xml
