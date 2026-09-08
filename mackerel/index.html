@@ -143,9 +143,12 @@ h1 .hunit{color:var(--muted);font-size:14px;font-weight:500;margin-left:4px}
 .card{background:#fff;border:1px solid var(--line);
   border-radius:var(--radius);padding:16px;margin:20px 0}
 .spark{width:100%;height:auto;display:block}
-/* 맨 위 한 줄. 눈에 띄되 화면을 잡아먹지 않게 — 읽히기만 하면 된다. */
-.disclosure{margin:0;padding:9px 12px;background:#f7f8fa;color:#6b7280;
-  font-size:11.5px;line-height:1.5;border-bottom:1px solid var(--line)}
+/* 맨 위 한 줄. 알리는 것이 목적이지 보여주는 것이 목적이 아니다 —
+   면도 테두리도 없이 작은 글씨로만 둔다. 다만 더 흐리게는 하지 않는다.
+   '소비자가 쉽게 인식할 수 있게' 라는 것이 고지의 요건이라, 읽히지 않으면
+   최상단에 두는 의미가 없어진다. */
+.disclosure{margin:0;padding:7px 2px 0;color:#a3a8b0;font-size:10.5px;
+  line-height:1.45}
 .stale{color:var(--muted);font-weight:500;margin-left:5px}
 .wkchip{margin-left:8px;font-size:12.5px;font-weight:700;white-space:nowrap}
 .wkchip .m{color:var(--muted);font-weight:500}
