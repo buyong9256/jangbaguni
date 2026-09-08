@@ -84,10 +84,11 @@ h1 .hunit{color:var(--muted);font-size:14px;font-weight:500;margin-left:4px}
    값 옆에 두면 판정 문장과 시선이 엉킨다. */
 .topbar{display:flex;align-items:center;gap:10px;padding:18px 0 6px}
 .topbar .back{padding:0;flex:1;min-width:0}
-.favbtn{display:inline-flex;align-items:center;gap:5px;padding:9px 14px;
-  border:1px solid var(--line);border-radius:11px;background:var(--card);
-  font:inherit;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer}
-.favbtn svg{width:14px;height:14px}
+/* 뒤로가기 글씨와 같은 무게로. 이 줄의 주인공은 품목 이름이지 버튼이 아니다. */
+.favbtn{display:inline-flex;align-items:center;gap:4px;padding:5px 10px;
+  border:1px solid var(--line);border-radius:8px;background:#fff;
+  font:inherit;font-size:12px;font-weight:600;color:var(--muted);cursor:pointer}
+.favbtn svg{width:12px;height:12px}
 .favbtn.on{color:var(--brand);border-color:var(--brand);background:#f0ecfe}
 .chead{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
 .cico{width:36px;height:36px;border-radius:50%;background:#f0ecfe;
