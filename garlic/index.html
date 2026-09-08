@@ -157,8 +157,14 @@ h1 .hunit{color:var(--muted);font-size:14px;font-weight:500;margin-left:4px}
 .fact .k{color:var(--muted);font-size:12px}
 .fact .v{font-weight:750;font-size:16px;letter-spacing:-.02em;
   font-variant-numeric:tabular-nums}
-.cta{display:block;text-align:center;background:var(--brand);color:#fff;
-  padding:15px;border-radius:12px;font-weight:700;margin-top:8px}
+/* 꽉 찬 보라는 화면에서 혼자 튄다 — 카드들을 흰 배경 + 테두리로 바꾼 뒤로는
+   더 그렇다. 같은 결로 맞추되, 눌러야 할 것이라는 건 글자색과 화살표로 알린다.
+   광고처럼 보이면 이 사이트의 값어치인 '판단'이 같이 의심받는다. */
+.cta{display:flex;align-items:center;justify-content:center;gap:6px;
+  text-align:center;background:#fff;color:var(--brand);
+  border:1px solid var(--brand);padding:13px;border-radius:12px;
+  font-weight:700;margin-top:8px}
+.cta::after{content:"→";font-weight:600}
 .note{color:var(--muted);font-size:11.5px;margin-top:12px;line-height:1.55}
 footer{color:var(--muted);font-size:11.5px;padding:26px 0 0;
   border-top:1px solid var(--line);margin-top:26px}
