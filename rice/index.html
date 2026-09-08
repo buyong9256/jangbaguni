@@ -10,44 +10,53 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
-:root{--ink:#111827;--muted:#6b7280;--line:#e9ecef;--bg:#fff;--soft:#f7f8fa;
-      --brand:#6d28d9;--radius:14px}
+:root{--ink:#111827;--muted:#6b7280;--line:#e7eaee;--bg:#ffffff;--soft:#f5f6f8;
+      --card:#ffffff;--brand:#6d28d9;--radius:14px}
 *{box-sizing:border-box}
-body{margin:0;background:var(--soft);color:var(--ink);
+body{margin:0;background:var(--bg);color:var(--ink);
      font:15px/1.6 Pretendard,-apple-system,'Malgun Gothic',sans-serif;
      -webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-.wrap{max-width:560px;margin:0 auto;padding:0 16px 72px;background:var(--bg);
-      min-height:100vh}
-header{padding:22px 0 14px}
-.brand{font-size:19px;font-weight:700;letter-spacing:-.03em}
-.tag{color:var(--muted);font-size:13px;margin-top:2px}
-.asof{color:var(--muted);font-size:12px;margin-top:10px}
-input[type=search]{width:100%;padding:12px 14px;border:1px solid var(--line);
-  border-radius:12px;font:inherit;background:var(--soft);margin:14px 0 10px}
+.wrap{max-width:560px;margin:0 auto;padding:0 16px 72px;min-height:100vh}
+header{padding:22px 0 12px}
+.today{display:flex;align-items:center;gap:6px;color:var(--muted);
+  font-size:13px;font-weight:500}
+.today svg{width:14px;height:14px}
+.brand{font-size:26px;font-weight:800;letter-spacing:-.04em;margin-top:6px}
+.tag{color:var(--muted);font-size:13.5px;margin-top:4px}
+.asof{display:flex;align-items:center;gap:6px;color:var(--muted);
+  font-size:12px;margin-top:12px}
+.asof svg{width:13px;height:13px;color:var(--brand)}
+input[type=search]{width:100%;padding:13px 15px;border:1px solid var(--line);
+  border-radius:13px;font:inherit;background:var(--soft);margin:14px 0 10px}
 input[type=search]:focus{outline:none;border-color:var(--brand);background:#fff}
 .chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:12px;
   scrollbar-width:none}
 .chips::-webkit-scrollbar{display:none}
-.chip{flex:0 0 auto;padding:7px 13px;border:1px solid var(--line);
-  border-radius:999px;font-size:13px;color:var(--muted);background:#fff;
+.chip{flex:0 0 auto;padding:8px 16px;border:1px solid var(--line);
+  border-radius:999px;font-size:13.5px;color:var(--muted);background:var(--card);
   cursor:pointer}
 .chip.on{background:var(--brand);border-color:var(--brand);color:#fff;
   font-weight:600}
-/* 이름과 값을 한 줄에, 신호는 아랫줄에 통째로 둔다.
-   신호를 값 옆에 붙이면 '아주 비쌈 +37%' 같은 긴 글자가 폭을 밀어내
-   오른쪽이 잘린다. 줄을 나누면 그 싸움 자체가 없어진다. */
-.row{display:block;padding:13px 2px;border-bottom:1px solid var(--line)}
-.row .top{display:flex;align-items:baseline;gap:10px}
-.row .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;
-  white-space:nowrap}
-.row .n1{font-weight:600;letter-spacing:-.01em}
-.row .n2{color:var(--muted);font-size:12.5px;margin-left:5px}
-.row .p1{flex:0 0 auto;font-weight:700;font-variant-numeric:tabular-nums;
+/* 품목 하나 = 흰 카드 하나. 좌 이모지 타일, 가운데 이름·신호, 우 가격·화살표 */
+.row{display:flex;align-items:center;gap:12px;background:var(--card);
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:13px 14px;margin-bottom:10px}
+.row:active{background:#fafafa}
+.tile{flex:0 0 48px;width:48px;height:48px;border-radius:12px;
+  background:var(--soft);display:flex;align-items:center;justify-content:center;
+  font-size:24px;line-height:1}
+.row .mid{flex:1;min-width:0}
+.row .top{display:flex;align-items:baseline;gap:6px}
+.row .n1{font-weight:700;font-size:16px;letter-spacing:-.02em}
+.row .n2{color:var(--muted);font-size:12.5px}
+.row .p2{display:flex;align-items:center;gap:5px;font-size:12.5px;
+  margin-top:3px;font-weight:650}
+.row .right{flex:0 0 auto;display:flex;align-items:center;gap:6px}
+.row .p1{font-weight:750;font-size:16.5px;font-variant-numeric:tabular-nums;
   letter-spacing:-.02em}
-.row .p2{display:block;font-size:12.5px;margin-top:3px;font-weight:600}
-.dot{display:inline-block;width:7px;height:7px;border-radius:50%;
-  margin-right:5px;vertical-align:1px}
+.row .right svg{width:14px;height:14px;color:#c4c9d0}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;flex:none}
 .empty{color:var(--muted);text-align:center;padding:40px 0}
 .preview{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;
   border-radius:10px;padding:11px 13px;font-size:12.5px;margin:14px 0 0;
@@ -55,7 +64,66 @@ input[type=search]:focus{outline:none;border-color:var(--brand);background:#fff}
 .preview b{font-weight:700}
 /* 상세 */
 .back{display:inline-block;color:var(--muted);font-size:13px;padding:18px 0 6px}
-h1{font-size:22px;margin:4px 0 2px;letter-spacing:-.03em}
+h1{font-size:22px;margin:0;letter-spacing:-.03em}
+h1 .hunit{color:var(--muted);font-size:14px;font-weight:500;margin-left:4px}
+.dhead{display:flex;gap:14px;align-items:flex-start;margin-top:8px}
+.dtile{flex:0 0 76px;width:76px;height:76px;border-radius:18px;
+  background:var(--soft);display:flex;align-items:center;justify-content:center;
+  font-size:40px;line-height:1}
+.dmeta{min-width:0;padding-top:2px}
+.dbadges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:7px}
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;
+  font-weight:650;padding:3px 9px;border-radius:999px}
+.badge.cat{background:#f0ecfe;color:var(--brand)}
+.badge.season{background:#eaf5ef;color:#2c7a52}
+.badge svg{width:11px;height:11px}
+.ddesc{color:var(--muted);font-size:13.5px;margin:6px 0 0;line-height:1.55}
+.pricebar{display:flex;align-items:center;gap:12px;margin-top:16px}
+.pricebar .sp{flex:1}
+.favbtn{display:inline-flex;align-items:center;gap:5px;padding:9px 14px;
+  border:1px solid var(--line);border-radius:11px;background:var(--card);
+  font:inherit;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer}
+.favbtn svg{width:14px;height:14px}
+.favbtn.on{color:var(--brand);border-color:var(--brand);background:#f0ecfe}
+.chead{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.cico{width:36px;height:36px;border-radius:50%;background:#f0ecfe;
+  color:var(--brand);display:flex;align-items:center;justify-content:center;
+  flex:0 0 36px}
+.cico svg{width:17px;height:17px}
+.ctx{min-width:0}
+.ctitle{font-size:14.5px;font-weight:750;letter-spacing:-.02em}
+.csub{font-size:11.5px;color:var(--muted);margin-top:1px}
+.chead .sp{flex:1}
+.seg{display:flex;gap:5px}
+.seg button{padding:5px 12px;font:inherit;font-size:12px;color:var(--muted);
+  background:var(--card);border:1px solid var(--line);border-radius:999px;
+  cursor:pointer}
+.seg button.on{background:var(--brand);border-color:var(--brand);color:#fff;
+  font-weight:650}
+.fk{display:flex;align-items:center;gap:7px;margin-bottom:8px}
+.fic{width:30px;height:30px;border-radius:50%;background:#f0ecfe;
+  color:var(--brand);display:flex;align-items:center;justify-content:center;
+  flex:0 0 30px;font-weight:800;font-size:14px}
+.fic svg{width:15px;height:15px}
+.fact .sub{font-size:11.5px;margin-top:3px;color:var(--muted);font-weight:500}
+.fact .sub b{font-weight:700}
+.rhead{display:flex;align-items:center;gap:6px;font-size:15px;font-weight:750;
+  margin:26px 0 3px;letter-spacing:-.02em}
+.rhead svg{width:15px;height:15px;color:var(--brand)}
+.rsub{color:var(--muted);font-size:12.5px;margin:0 0 12px}
+.rrow{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;
+  scrollbar-width:none}
+.rrow::-webkit-scrollbar{display:none}
+.rcard{flex:0 0 150px;background:var(--card);border:1px solid var(--line);
+  border-radius:13px;padding:12px;text-decoration:none}
+.rcard .remoji{width:44px;height:44px;border-radius:11px;background:var(--soft);
+  display:flex;align-items:center;justify-content:center;font-size:22px;
+  margin-bottom:9px}
+.rcard .rcat{display:inline-block;font-size:10.5px;font-weight:650;
+  color:var(--brand);background:#f0ecfe;border-radius:999px;padding:2px 7px;
+  margin-bottom:5px}
+.rcard .rname{font-size:14px;font-weight:700;letter-spacing:-.02em}
+.rcard .rdesc{font-size:11.5px;color:var(--muted);margin-top:3px;line-height:1.45}
 .unit{color:var(--muted);font-size:13px;margin-bottom:18px}
 .big{font-size:38px;font-weight:800;letter-spacing:-.04em;
   font-variant-numeric:tabular-nums}
@@ -63,14 +131,13 @@ h1{font-size:22px;margin:4px 0 2px;letter-spacing:-.03em}
 .detail{color:var(--muted);font-size:13.5px}
 .card{background:var(--soft);border:1px solid var(--line);
   border-radius:var(--radius);padding:16px;margin:20px 0}
-.spark{width:100%;height:190px;display:block}
-.axis{display:flex;justify-content:space-between;color:var(--muted);
-  font-size:11.5px;margin-top:-6px}
+.spark{width:100%;height:auto;display:block}
 .facts{display:flex;gap:10px;margin:18px 0}
 .fact{flex:1;background:var(--soft);border:1px solid var(--line);
-  border-radius:var(--radius);padding:13px}
+  border-radius:var(--radius);padding:13px;min-width:0}
 .fact .k{color:var(--muted);font-size:12px}
-.fact .v{font-weight:700;margin-top:3px;font-variant-numeric:tabular-nums}
+.fact .v{font-weight:750;font-size:16px;letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums}
 .cta{display:block;text-align:center;background:var(--brand);color:#fff;
   padding:15px;border-radius:12px;font-weight:700;margin-top:8px}
 .note{color:var(--muted);font-size:11.5px;margin-top:12px;line-height:1.55}
@@ -79,34 +146,159 @@ footer{color:var(--muted);font-size:11.5px;padding:26px 0 0;
 </style></head><body><div class="wrap">
 <a class="back" href="../">← 오늘의 장바구니</a>
 
-<h1>쌀 지금 사도 될까?</h1>
-<div class="unit">20kg 기준 · 2026-09-07 조사</div>
-<div class="big">59,900원</div>
-<div class="verdict" style="color:#d97706">
-  <i class="dot" style="background:#d97706"></i>비싼 편</div>
-<div class="detail">예년 같은 달보다 24% 비쌉니다. 보통 6월이 가장 쌉니다.</div>
-<div class="card"><svg class="spark" viewBox="0 0 680 190" preserveAspectRatio="none"
-   role="img" aria-label="최근 1년 가격 추이">
-  <polygon points="8.0,168.0 8.0,14.0 24.2,14.0 40.4,122.6 56.6,122.6 72.8,136.4 89.0,136.4 105.2,123.6 121.4,110.7 137.6,110.7 153.8,110.7 170.0,49.5 186.1,69.3 202.3,128.5 218.5,128.5 234.7,128.5 250.9,148.3 267.1,148.3 283.3,148.3 299.5,148.3 315.7,148.3 331.9,168.0 348.1,168.0 364.3,168.0 380.5,158.1 396.7,148.3 412.9,148.3 429.1,148.3 445.3,148.3 461.5,148.3 477.7,148.3 493.9,148.3 510.0,148.3 526.2,168.0 542.4,168.0 558.6,168.0 574.8,168.0 591.0,168.0 607.2,168.0 623.4,168.0 639.6,168.0 655.8,168.0 672.0,168.0 672.0,168.0" fill="#6d28d9" opacity=".07"/>
-  <polyline points="8.0,14.0 24.2,14.0 40.4,122.6 56.6,122.6 72.8,136.4 89.0,136.4 105.2,123.6 121.4,110.7 137.6,110.7 153.8,110.7 170.0,49.5 186.1,69.3 202.3,128.5 218.5,128.5 234.7,128.5 250.9,148.3 267.1,148.3 283.3,148.3 299.5,148.3 315.7,148.3 331.9,168.0 348.1,168.0 364.3,168.0 380.5,158.1 396.7,148.3 412.9,148.3 429.1,148.3 445.3,148.3 461.5,148.3 477.7,148.3 493.9,148.3 510.0,148.3 526.2,168.0 542.4,168.0 558.6,168.0 574.8,168.0 591.0,168.0 607.2,168.0 623.4,168.0 639.6,168.0 655.8,168.0 672.0,168.0" fill="none" stroke="#6d28d9"
-    stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-  <circle cx="672.0" cy="168.0" r="4" fill="#6d28d9"/>
-</svg>
-  <div class="axis"><span>1년 전</span><span>오늘</span></div>
+<div class="dhead">
+  <span class="dtile" aria-hidden="true">🌾</span>
+  <div class="dmeta">
+    <div class="dbadges"><span class="badge cat">곡물</span><span class="badge season"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg>보통 싸지는 시기 6~8월</span></div>
+    <h1>쌀<span class="hunit">20kg</span></h1>
+    <p class="ddesc">매일 먹는 주식, 보관만 잘하면 오래 두고 먹어요.</p>
+  </div>
+</div>
+<div class="pricebar">
+  <div>
+    <div class="big">59,900원</div>
+    <div class="verdict" style="color:#d97706">
+      <i class="dot" style="background:#d97706"></i>비싼 편 +24%</div>
+  </div>
+  <span class="sp"></span>
+  <button class="favbtn" id="fav" data-slug="rice" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+    <span>즐겨찾기</span>
+  </button>
+</div>
+<div class="detail">예년 같은 달보다 24% 비쌉니다. 보통 6월이 가장 쌉니다. <span style="color:var(--muted)">
+  (2026-09-07 조사)</span></div>
+<div class="card">
+  <div class="chead">
+    <span class="cico" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round"><path d="M3 20h18"/><path d="m4 15 5-6 4 3 6-8"/></svg>
+    </span>
+    <div class="ctx">
+      <div class="ctitle">가격 추이</div>
+      <div class="csub" id="csub">최근 1개월 간 쌀 가격 변동 추이예요.</div>
+    </div>
+    <span class="sp"></span>
+    <div class="seg" id="pseg" data-name="쌀"><button data-p="7" data-l="1주">1주</button><button data-p="30" data-l="1개월" class=on>1개월</button><button data-p="90" data-l="3개월">3개월</button><button data-p="180" data-l="6개월">6개월</button></div>
+  </div>
+  <div class="chartp" data-p="7" hidden><svg class="spark" viewBox="0 0 680 220" role="img" aria-label="가격 추이">
+  <defs><linearGradient id="grad7" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#6d28d9" stop-opacity=".2"/>
+    <stop offset="1" stop-color="#6d28d9" stop-opacity="0"/>
+  </linearGradient></defs>
+  <line x1="64" x2="666" y1="113.3" y2="113.3" stroke="#eef0f4"/><text x="55" y="117.3" text-anchor="end" font-size="11" fill="#9aa1ab">60,000원</text>
+  <polygon points="64.0,192 64.0,118.0 214.5,118.0 365.0,118.0 515.5,118.0 666.0,118.0 666.0,192" fill="url(#grad7)"/>
+  <polyline points="64.0,118.0 214.5,118.0 365.0,118.0 515.5,118.0 666.0,118.0" fill="none" stroke="#6d28d9"
+    stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="666.0" cy="118.0" r="4.5" fill="#6d28d9"
+    stroke="#fff" stroke-width="2"/>
+  <rect x="580" y="80" width="86" height="24" rx="12" fill="#6d28d9"/><text x="623" y="96" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">59,900원</text><text x="64.0" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">9.1</text><text x="214.5" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">9.2</text><text x="365.0" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">9.3</text><text x="515.5" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">9.4</text><text x="666.0" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">9.7</text>
+</svg></div><div class="chartp" data-p="30"><svg class="spark" viewBox="0 0 680 220" role="img" aria-label="가격 추이">
+  <defs><linearGradient id="grad30" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#6d28d9" stop-opacity=".2"/>
+    <stop offset="1" stop-color="#6d28d9" stop-opacity="0"/>
+  </linearGradient></defs>
+  <line x1="64" x2="666" y1="113.3" y2="113.3" stroke="#eef0f4"/><text x="55" y="117.3" text-anchor="end" font-size="11" fill="#9aa1ab">60,000원</text>
+  <polygon points="64.0,192 64.0,118.0 95.7,118.0 127.4,118.0 159.1,118.0 190.7,118.0 222.4,118.0 254.1,118.0 285.8,118.0 317.5,118.0 349.2,118.0 380.8,118.0 412.5,118.0 444.2,118.0 475.9,118.0 507.6,118.0 539.3,118.0 570.9,118.0 602.6,118.0 634.3,118.0 666.0,118.0 666.0,192" fill="url(#grad30)"/>
+  <polyline points="64.0,118.0 95.7,118.0 127.4,118.0 159.1,118.0 190.7,118.0 222.4,118.0 254.1,118.0 285.8,118.0 317.5,118.0 349.2,118.0 380.8,118.0 412.5,118.0 444.2,118.0 475.9,118.0 507.6,118.0 539.3,118.0 570.9,118.0 602.6,118.0 634.3,118.0 666.0,118.0" fill="none" stroke="#6d28d9"
+    stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="666.0" cy="118.0" r="4.5" fill="#6d28d9"
+    stroke="#fff" stroke-width="2"/>
+  <rect x="580" y="80" width="86" height="24" rx="12" fill="#6d28d9"/><text x="623" y="96" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">59,900원</text><text x="64.0" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">8.10</text><text x="190.7" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">8.14</text><text x="317.5" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">8.21</text><text x="444.2" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">8.27</text><text x="570.9" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">9.2</text><text x="666.0" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">9.7</text>
+</svg></div><div class="chartp" data-p="90" hidden><svg class="spark" viewBox="0 0 680 220" role="img" aria-label="가격 추이">
+  <defs><linearGradient id="grad90" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#6d28d9" stop-opacity=".2"/>
+    <stop offset="1" stop-color="#6d28d9" stop-opacity="0"/>
+  </linearGradient></defs>
+  <line x1="64" x2="666" y1="163.5" y2="163.5" stroke="#eef0f4"/><text x="55" y="167.5" text-anchor="end" font-size="11" fill="#9aa1ab">60,000원</text><line x1="64" x2="666" y1="106.6" y2="106.6" stroke="#eef0f4"/><text x="55" y="110.6" text-anchor="end" font-size="11" fill="#9aa1ab">60,500원</text><line x1="64" x2="666" y1="49.7" y2="49.7" stroke="#eef0f4"/><text x="55" y="53.7" text-anchor="end" font-size="11" fill="#9aa1ab">61,000원</text>
+  <polygon points="64.0,192 64.0,61.1 73.9,61.1 83.7,61.1 93.6,61.1 103.5,61.1 113.3,61.1 123.2,61.1 133.1,61.1 143.0,61.1 152.8,61.1 162.7,61.1 172.6,61.1 182.4,61.1 192.3,61.1 202.2,61.1 212.0,61.1 221.9,174.9 231.8,174.9 241.6,174.9 251.5,174.9 261.4,174.9 271.2,174.9 281.1,174.9 291.0,174.9 300.9,174.9 310.7,174.9 320.6,174.9 330.5,174.9 340.3,174.9 350.2,174.9 360.1,174.9 369.9,174.9 379.8,174.9 389.7,174.9 399.5,174.9 409.4,174.9 419.3,174.9 429.1,174.9 439.0,174.9 448.9,174.9 458.8,174.9 468.6,174.9 478.5,174.9 488.4,174.9 498.2,174.9 508.1,174.9 518.0,174.9 527.8,174.9 537.7,174.9 547.6,174.9 557.4,174.9 567.3,174.9 577.2,174.9 587.0,174.9 596.9,174.9 606.8,174.9 616.7,174.9 626.5,174.9 636.4,174.9 646.3,174.9 656.1,174.9 666.0,174.9 666.0,192" fill="url(#grad90)"/>
+  <polyline points="64.0,61.1 73.9,61.1 83.7,61.1 93.6,61.1 103.5,61.1 113.3,61.1 123.2,61.1 133.1,61.1 143.0,61.1 152.8,61.1 162.7,61.1 172.6,61.1 182.4,61.1 192.3,61.1 202.2,61.1 212.0,61.1 221.9,174.9 231.8,174.9 241.6,174.9 251.5,174.9 261.4,174.9 271.2,174.9 281.1,174.9 291.0,174.9 300.9,174.9 310.7,174.9 320.6,174.9 330.5,174.9 340.3,174.9 350.2,174.9 360.1,174.9 369.9,174.9 379.8,174.9 389.7,174.9 399.5,174.9 409.4,174.9 419.3,174.9 429.1,174.9 439.0,174.9 448.9,174.9 458.8,174.9 468.6,174.9 478.5,174.9 488.4,174.9 498.2,174.9 508.1,174.9 518.0,174.9 527.8,174.9 537.7,174.9 547.6,174.9 557.4,174.9 567.3,174.9 577.2,174.9 587.0,174.9 596.9,174.9 606.8,174.9 616.7,174.9 626.5,174.9 636.4,174.9 646.3,174.9 656.1,174.9 666.0,174.9" fill="none" stroke="#6d28d9"
+    stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="666.0" cy="174.9" r="4.5" fill="#6d28d9"
+    stroke="#fff" stroke-width="2"/>
+  <rect x="580" y="137" width="86" height="24" rx="12" fill="#6d28d9"/><text x="623" y="153" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">59,900원</text><text x="64.0" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">6.10</text><text x="212.0" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">7.1</text><text x="360.1" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">7.23</text><text x="508.1" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">8.13</text><text x="656.1" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">9.4</text><text x="666.0" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">9.7</text>
+</svg></div><div class="chartp" data-p="180" hidden><svg class="spark" viewBox="0 0 680 220" role="img" aria-label="가격 추이">
+  <defs><linearGradient id="grad180" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#6d28d9" stop-opacity=".2"/>
+    <stop offset="1" stop-color="#6d28d9" stop-opacity="0"/>
+  </linearGradient></defs>
+  <line x1="64" x2="666" y1="163.5" y2="163.5" stroke="#eef0f4"/><text x="55" y="167.5" text-anchor="end" font-size="11" fill="#9aa1ab">60,000원</text><line x1="64" x2="666" y1="106.6" y2="106.6" stroke="#eef0f4"/><text x="55" y="110.6" text-anchor="end" font-size="11" fill="#9aa1ab">60,500원</text><line x1="64" x2="666" y1="49.7" y2="49.7" stroke="#eef0f4"/><text x="55" y="53.7" text-anchor="end" font-size="11" fill="#9aa1ab">61,000원</text>
+  <polygon points="64.0,192 64.0,61.1 69.0,61.1 74.0,61.1 78.9,61.1 83.9,61.1 88.9,61.1 93.9,61.1 98.8,61.1 103.8,61.1 108.8,61.1 113.8,61.1 118.7,61.1 123.7,61.1 128.7,61.1 133.7,61.1 138.6,61.1 143.6,61.1 148.6,61.1 153.6,61.1 158.5,61.1 163.5,174.9 168.5,174.9 173.5,174.9 178.4,174.9 183.4,174.9 188.4,174.9 193.4,174.9 198.3,174.9 203.3,174.9 208.3,174.9 213.3,174.9 218.2,174.9 223.2,174.9 228.2,174.9 233.2,174.9 238.1,61.1 243.1,61.1 248.1,61.1 253.1,61.1 258.0,61.1 263.0,61.1 268.0,61.1 273.0,61.1 277.9,61.1 282.9,61.1 287.9,61.1 292.9,61.1 297.8,61.1 302.8,61.1 307.8,61.1 312.8,61.1 317.7,61.1 322.7,61.1 327.7,61.1 332.7,61.1 337.6,61.1 342.6,61.1 347.6,61.1 352.6,61.1 357.5,61.1 362.5,61.1 367.5,61.1 372.5,61.1 377.4,61.1 382.4,61.1 387.4,61.1 392.4,61.1 397.3,61.1 402.3,61.1 407.3,61.1 412.3,61.1 417.2,61.1 422.2,61.1 427.2,61.1 432.2,61.1 437.1,61.1 442.1,174.9 447.1,174.9 452.1,174.9 457.0,174.9 462.0,174.9 467.0,174.9 472.0,174.9 476.9,174.9 481.9,174.9 486.9,174.9 491.9,174.9 496.8,174.9 501.8,174.9 506.8,174.9 511.8,174.9 516.7,174.9 521.7,174.9 526.7,174.9 531.7,174.9 536.6,174.9 541.6,174.9 546.6,174.9 551.6,174.9 556.5,174.9 561.5,174.9 566.5,174.9 571.5,174.9 576.4,174.9 581.4,174.9 586.4,174.9 591.4,174.9 596.3,174.9 601.3,174.9 606.3,174.9 611.3,174.9 616.2,174.9 621.2,174.9 626.2,174.9 631.2,174.9 636.1,174.9 641.1,174.9 646.1,174.9 651.1,174.9 656.0,174.9 661.0,174.9 666.0,174.9 666.0,192" fill="url(#grad180)"/>
+  <polyline points="64.0,61.1 69.0,61.1 74.0,61.1 78.9,61.1 83.9,61.1 88.9,61.1 93.9,61.1 98.8,61.1 103.8,61.1 108.8,61.1 113.8,61.1 118.7,61.1 123.7,61.1 128.7,61.1 133.7,61.1 138.6,61.1 143.6,61.1 148.6,61.1 153.6,61.1 158.5,61.1 163.5,174.9 168.5,174.9 173.5,174.9 178.4,174.9 183.4,174.9 188.4,174.9 193.4,174.9 198.3,174.9 203.3,174.9 208.3,174.9 213.3,174.9 218.2,174.9 223.2,174.9 228.2,174.9 233.2,174.9 238.1,61.1 243.1,61.1 248.1,61.1 253.1,61.1 258.0,61.1 263.0,61.1 268.0,61.1 273.0,61.1 277.9,61.1 282.9,61.1 287.9,61.1 292.9,61.1 297.8,61.1 302.8,61.1 307.8,61.1 312.8,61.1 317.7,61.1 322.7,61.1 327.7,61.1 332.7,61.1 337.6,61.1 342.6,61.1 347.6,61.1 352.6,61.1 357.5,61.1 362.5,61.1 367.5,61.1 372.5,61.1 377.4,61.1 382.4,61.1 387.4,61.1 392.4,61.1 397.3,61.1 402.3,61.1 407.3,61.1 412.3,61.1 417.2,61.1 422.2,61.1 427.2,61.1 432.2,61.1 437.1,61.1 442.1,174.9 447.1,174.9 452.1,174.9 457.0,174.9 462.0,174.9 467.0,174.9 472.0,174.9 476.9,174.9 481.9,174.9 486.9,174.9 491.9,174.9 496.8,174.9 501.8,174.9 506.8,174.9 511.8,174.9 516.7,174.9 521.7,174.9 526.7,174.9 531.7,174.9 536.6,174.9 541.6,174.9 546.6,174.9 551.6,174.9 556.5,174.9 561.5,174.9 566.5,174.9 571.5,174.9 576.4,174.9 581.4,174.9 586.4,174.9 591.4,174.9 596.3,174.9 601.3,174.9 606.3,174.9 611.3,174.9 616.2,174.9 621.2,174.9 626.2,174.9 631.2,174.9 636.1,174.9 641.1,174.9 646.1,174.9 651.1,174.9 656.0,174.9 661.0,174.9 666.0,174.9" fill="none" stroke="#6d28d9"
+    stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="666.0" cy="174.9" r="4.5" fill="#6d28d9"
+    stroke="#fff" stroke-width="2"/>
+  <rect x="580" y="137" width="86" height="24" rx="12" fill="#6d28d9"/><text x="623" y="153" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">59,900원</text><text x="64.0" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">3.12</text><text x="213.3" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">4.23</text><text x="362.5" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">6.10</text><text x="511.8" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">7.23</text><text x="661.0" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">9.4</text><text x="666.0" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">9.7</text>
+</svg></div>
 </div>
 <div class="facts">
-  <div class="fact"><div class="k">예년 같은 때</div>
-    <div class="v">48,260원</div></div>
-  <div class="fact"><div class="k">최근 1년 최저</div>
-    <div class="v">59,900원</div></div>
-  <div class="fact"><div class="k">연중 싼 때</div>
-    <div class="v">6월</div></div>
+  <div class="fact"><div class="fk"><span class="fic" aria-hidden="true">₩</span><span class="k">예년 같은 때</span></div>
+    <div class="v">48,260원</div><div class="sub">지난주와 비슷</div></div>
+  <div class="fact"><div class="fk"><span class="fic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l5.5 6 4-3L21 17"/><path d="M15 17h6v-6"/></svg></span><span class="k">최근 1년 최저</span></div>
+    <div class="v">59,900원</div>
+    <div class="sub">(2026.04)</div></div>
+  <div class="fact"><div class="fk"><span class="fic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5.5-6 4 3L21 7"/><path d="M15 7h6v6"/></svg></span><span class="k">최근 1년 최고</span></div>
+    <div class="v">72,900원</div>
+    <div class="sub">(2026.01)</div></div>
 </div>
 <a class="cta" href="https://www.coupang.com/np/search?q=%EC%8C%80" target="_blank" rel="noopener">쿠팡에서 쌀 보기</a><p class="note">쿠팡 가격은 저희가 알지 못해 값을 적지 않습니다. (파트너스 링크 연결 전이라 수수료가 붙지 않습니다)</p>
+<div class="rhead">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round"><path d="M7 2v9a2 2 0 0 0 2 2v9M11 2v9a2 2 0 0 1-2 2"/>
+    <path d="M7 2v6M17 2c-1.7 0-3 2.2-3 5v4h3v11M17 2v11"/></svg>
+  이 재료로 해먹기</div>
+<p class="rsub">지금은 비싼 편이에요 — 조금씩 쓰는 요리 위주로 골라봤어요.</p>
+<div class="rrow"><a class="rcard" href="https://www.10000recipe.com/recipe/list.html?q=%EC%86%A5%EB%B0%A5"
+   target="_blank" rel="noopener">
+  <span class="remoji" aria-hidden="true">🍚</span>
+  <span class="rcat">한식</span>
+  <div class="rname">솥밥</div>
+  <div class="rdesc">재료 얹어 짓는 한 끼</div>
+</a><a class="rcard" href="https://www.10000recipe.com/recipe/list.html?q=%EC%A3%BC%EB%A8%B9%EB%B0%A5"
+   target="_blank" rel="noopener">
+  <span class="remoji" aria-hidden="true">🍙</span>
+  <span class="rcat">간식</span>
+  <div class="rname">주먹밥</div>
+  <div class="rdesc">남은 반찬 활용 간편식</div>
+</a><a class="rcard" href="https://www.10000recipe.com/recipe/list.html?q=%EB%88%84%EB%A3%BD%EC%A7%80"
+   target="_blank" rel="noopener">
+  <span class="remoji" aria-hidden="true">🍘</span>
+  <span class="rcat">간식</span>
+  <div class="rname">누룽지</div>
+  <div class="rdesc">구수한 후식 겸 야식</div>
+</a></div>
+<p class="note">요리를 누르면 만개의레시피 검색으로 이동합니다.</p>
 <footer>
   최근 5년 같은 달의 월평균 5개년과 견줬습니다.
   같은 시기 중 가장 비싼 값입니다.<br>
   출처: <a href="https://www.kamis.or.kr" target="_blank" rel="noopener">
   농산물유통정보(KAMIS)</a> 소매 조사값. 실제 판매가와 다를 수 있어요.
 </footer>
+
+<script>
+(function(){
+var seg=document.getElementById('pseg');
+var segs=[].slice.call(document.querySelectorAll('#pseg button'));
+var csub=document.getElementById('csub');
+segs.forEach(function(b){b.onclick=function(){
+  segs.forEach(function(x){x.classList.toggle('on',x===b);});
+  [].slice.call(document.querySelectorAll('.chartp')).forEach(function(c){
+    c.hidden = c.getAttribute('data-p')!==b.getAttribute('data-p');});
+  if(csub&&seg){csub.textContent='최근 '+b.getAttribute('data-l')+' 간 '
+    +seg.getAttribute('data-name')+' 가격 변동 추이예요.';}
+};});
+var fav=document.getElementById('fav');
+if(fav){var KEY='favs',slug=fav.getAttribute('data-slug'),list=[];
+try{list=JSON.parse(localStorage.getItem(KEY))||[]}catch(e){}
+function upd(){var on=list.indexOf(slug)>=0;
+  fav.classList.toggle('on',on);
+  fav.querySelector('span').textContent=on?'저장됨':'즐겨찾기';}
+fav.onclick=function(){var i=list.indexOf(slug);
+  if(i>=0)list.splice(i,1);else list.push(slug);
+  try{localStorage.setItem(KEY,JSON.stringify(list))}catch(e){}
+  upd();};
+upd();}
+})();
+</script>
 </div></body></html>

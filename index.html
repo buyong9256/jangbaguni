@@ -10,44 +10,53 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
-:root{--ink:#111827;--muted:#6b7280;--line:#e9ecef;--bg:#fff;--soft:#f7f8fa;
-      --brand:#6d28d9;--radius:14px}
+:root{--ink:#111827;--muted:#6b7280;--line:#e7eaee;--bg:#ffffff;--soft:#f5f6f8;
+      --card:#ffffff;--brand:#6d28d9;--radius:14px}
 *{box-sizing:border-box}
-body{margin:0;background:var(--soft);color:var(--ink);
+body{margin:0;background:var(--bg);color:var(--ink);
      font:15px/1.6 Pretendard,-apple-system,'Malgun Gothic',sans-serif;
      -webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-.wrap{max-width:560px;margin:0 auto;padding:0 16px 72px;background:var(--bg);
-      min-height:100vh}
-header{padding:22px 0 14px}
-.brand{font-size:19px;font-weight:700;letter-spacing:-.03em}
-.tag{color:var(--muted);font-size:13px;margin-top:2px}
-.asof{color:var(--muted);font-size:12px;margin-top:10px}
-input[type=search]{width:100%;padding:12px 14px;border:1px solid var(--line);
-  border-radius:12px;font:inherit;background:var(--soft);margin:14px 0 10px}
+.wrap{max-width:560px;margin:0 auto;padding:0 16px 72px;min-height:100vh}
+header{padding:22px 0 12px}
+.today{display:flex;align-items:center;gap:6px;color:var(--muted);
+  font-size:13px;font-weight:500}
+.today svg{width:14px;height:14px}
+.brand{font-size:26px;font-weight:800;letter-spacing:-.04em;margin-top:6px}
+.tag{color:var(--muted);font-size:13.5px;margin-top:4px}
+.asof{display:flex;align-items:center;gap:6px;color:var(--muted);
+  font-size:12px;margin-top:12px}
+.asof svg{width:13px;height:13px;color:var(--brand)}
+input[type=search]{width:100%;padding:13px 15px;border:1px solid var(--line);
+  border-radius:13px;font:inherit;background:var(--soft);margin:14px 0 10px}
 input[type=search]:focus{outline:none;border-color:var(--brand);background:#fff}
 .chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:12px;
   scrollbar-width:none}
 .chips::-webkit-scrollbar{display:none}
-.chip{flex:0 0 auto;padding:7px 13px;border:1px solid var(--line);
-  border-radius:999px;font-size:13px;color:var(--muted);background:#fff;
+.chip{flex:0 0 auto;padding:8px 16px;border:1px solid var(--line);
+  border-radius:999px;font-size:13.5px;color:var(--muted);background:var(--card);
   cursor:pointer}
 .chip.on{background:var(--brand);border-color:var(--brand);color:#fff;
   font-weight:600}
-/* 이름과 값을 한 줄에, 신호는 아랫줄에 통째로 둔다.
-   신호를 값 옆에 붙이면 '아주 비쌈 +37%' 같은 긴 글자가 폭을 밀어내
-   오른쪽이 잘린다. 줄을 나누면 그 싸움 자체가 없어진다. */
-.row{display:block;padding:13px 2px;border-bottom:1px solid var(--line)}
-.row .top{display:flex;align-items:baseline;gap:10px}
-.row .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;
-  white-space:nowrap}
-.row .n1{font-weight:600;letter-spacing:-.01em}
-.row .n2{color:var(--muted);font-size:12.5px;margin-left:5px}
-.row .p1{flex:0 0 auto;font-weight:700;font-variant-numeric:tabular-nums;
+/* 품목 하나 = 흰 카드 하나. 좌 이모지 타일, 가운데 이름·신호, 우 가격·화살표 */
+.row{display:flex;align-items:center;gap:12px;background:var(--card);
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:13px 14px;margin-bottom:10px}
+.row:active{background:#fafafa}
+.tile{flex:0 0 48px;width:48px;height:48px;border-radius:12px;
+  background:var(--soft);display:flex;align-items:center;justify-content:center;
+  font-size:24px;line-height:1}
+.row .mid{flex:1;min-width:0}
+.row .top{display:flex;align-items:baseline;gap:6px}
+.row .n1{font-weight:700;font-size:16px;letter-spacing:-.02em}
+.row .n2{color:var(--muted);font-size:12.5px}
+.row .p2{display:flex;align-items:center;gap:5px;font-size:12.5px;
+  margin-top:3px;font-weight:650}
+.row .right{flex:0 0 auto;display:flex;align-items:center;gap:6px}
+.row .p1{font-weight:750;font-size:16.5px;font-variant-numeric:tabular-nums;
   letter-spacing:-.02em}
-.row .p2{display:block;font-size:12.5px;margin-top:3px;font-weight:600}
-.dot{display:inline-block;width:7px;height:7px;border-radius:50%;
-  margin-right:5px;vertical-align:1px}
+.row .right svg{width:14px;height:14px;color:#c4c9d0}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;flex:none}
 .empty{color:var(--muted);text-align:center;padding:40px 0}
 .preview{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;
   border-radius:10px;padding:11px 13px;font-size:12.5px;margin:14px 0 0;
@@ -55,7 +64,66 @@ input[type=search]:focus{outline:none;border-color:var(--brand);background:#fff}
 .preview b{font-weight:700}
 /* 상세 */
 .back{display:inline-block;color:var(--muted);font-size:13px;padding:18px 0 6px}
-h1{font-size:22px;margin:4px 0 2px;letter-spacing:-.03em}
+h1{font-size:22px;margin:0;letter-spacing:-.03em}
+h1 .hunit{color:var(--muted);font-size:14px;font-weight:500;margin-left:4px}
+.dhead{display:flex;gap:14px;align-items:flex-start;margin-top:8px}
+.dtile{flex:0 0 76px;width:76px;height:76px;border-radius:18px;
+  background:var(--soft);display:flex;align-items:center;justify-content:center;
+  font-size:40px;line-height:1}
+.dmeta{min-width:0;padding-top:2px}
+.dbadges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:7px}
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;
+  font-weight:650;padding:3px 9px;border-radius:999px}
+.badge.cat{background:#f0ecfe;color:var(--brand)}
+.badge.season{background:#eaf5ef;color:#2c7a52}
+.badge svg{width:11px;height:11px}
+.ddesc{color:var(--muted);font-size:13.5px;margin:6px 0 0;line-height:1.55}
+.pricebar{display:flex;align-items:center;gap:12px;margin-top:16px}
+.pricebar .sp{flex:1}
+.favbtn{display:inline-flex;align-items:center;gap:5px;padding:9px 14px;
+  border:1px solid var(--line);border-radius:11px;background:var(--card);
+  font:inherit;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer}
+.favbtn svg{width:14px;height:14px}
+.favbtn.on{color:var(--brand);border-color:var(--brand);background:#f0ecfe}
+.chead{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.cico{width:36px;height:36px;border-radius:50%;background:#f0ecfe;
+  color:var(--brand);display:flex;align-items:center;justify-content:center;
+  flex:0 0 36px}
+.cico svg{width:17px;height:17px}
+.ctx{min-width:0}
+.ctitle{font-size:14.5px;font-weight:750;letter-spacing:-.02em}
+.csub{font-size:11.5px;color:var(--muted);margin-top:1px}
+.chead .sp{flex:1}
+.seg{display:flex;gap:5px}
+.seg button{padding:5px 12px;font:inherit;font-size:12px;color:var(--muted);
+  background:var(--card);border:1px solid var(--line);border-radius:999px;
+  cursor:pointer}
+.seg button.on{background:var(--brand);border-color:var(--brand);color:#fff;
+  font-weight:650}
+.fk{display:flex;align-items:center;gap:7px;margin-bottom:8px}
+.fic{width:30px;height:30px;border-radius:50%;background:#f0ecfe;
+  color:var(--brand);display:flex;align-items:center;justify-content:center;
+  flex:0 0 30px;font-weight:800;font-size:14px}
+.fic svg{width:15px;height:15px}
+.fact .sub{font-size:11.5px;margin-top:3px;color:var(--muted);font-weight:500}
+.fact .sub b{font-weight:700}
+.rhead{display:flex;align-items:center;gap:6px;font-size:15px;font-weight:750;
+  margin:26px 0 3px;letter-spacing:-.02em}
+.rhead svg{width:15px;height:15px;color:var(--brand)}
+.rsub{color:var(--muted);font-size:12.5px;margin:0 0 12px}
+.rrow{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;
+  scrollbar-width:none}
+.rrow::-webkit-scrollbar{display:none}
+.rcard{flex:0 0 150px;background:var(--card);border:1px solid var(--line);
+  border-radius:13px;padding:12px;text-decoration:none}
+.rcard .remoji{width:44px;height:44px;border-radius:11px;background:var(--soft);
+  display:flex;align-items:center;justify-content:center;font-size:22px;
+  margin-bottom:9px}
+.rcard .rcat{display:inline-block;font-size:10.5px;font-weight:650;
+  color:var(--brand);background:#f0ecfe;border-radius:999px;padding:2px 7px;
+  margin-bottom:5px}
+.rcard .rname{font-size:14px;font-weight:700;letter-spacing:-.02em}
+.rcard .rdesc{font-size:11.5px;color:var(--muted);margin-top:3px;line-height:1.45}
 .unit{color:var(--muted);font-size:13px;margin-bottom:18px}
 .big{font-size:38px;font-weight:800;letter-spacing:-.04em;
   font-variant-numeric:tabular-nums}
@@ -63,14 +131,13 @@ h1{font-size:22px;margin:4px 0 2px;letter-spacing:-.03em}
 .detail{color:var(--muted);font-size:13.5px}
 .card{background:var(--soft);border:1px solid var(--line);
   border-radius:var(--radius);padding:16px;margin:20px 0}
-.spark{width:100%;height:190px;display:block}
-.axis{display:flex;justify-content:space-between;color:var(--muted);
-  font-size:11.5px;margin-top:-6px}
+.spark{width:100%;height:auto;display:block}
 .facts{display:flex;gap:10px;margin:18px 0}
 .fact{flex:1;background:var(--soft);border:1px solid var(--line);
-  border-radius:var(--radius);padding:13px}
+  border-radius:var(--radius);padding:13px;min-width:0}
 .fact .k{color:var(--muted);font-size:12px}
-.fact .v{font-weight:700;margin-top:3px;font-variant-numeric:tabular-nums}
+.fact .v{font-weight:750;font-size:16px;letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums}
 .cta{display:block;text-align:center;background:var(--brand);color:#fff;
   padding:15px;border-radius:12px;font-weight:700;margin-top:8px}
 .note{color:var(--muted);font-size:11.5px;margin-top:12px;line-height:1.55}
@@ -78,112 +145,132 @@ footer{color:var(--muted);font-size:11.5px;padding:26px 0 0;
   border-top:1px solid var(--line);margin-top:26px}
 </style></head><body><div class="wrap">
 <header>
+  <div class="today">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect
+      x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg>
+    2026년 09월 07일 (월)
+  </div>
   <div class="brand">오늘의 장바구니</div>
   <div class="tag">이거 지금 사도 될까? 예년 같은 때와 견줘 알려드려요.</div>
-  <div class="asof">2026-09-07 조사 기준 · 출처 농산물유통정보(KAMIS)</div>
+  <div class="asof">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path
+      d="M12 2l2.3 7.7L22 12l-7.7 2.3L12 22l-2.3-7.7L2 12l7.7-2.3z"/></svg>
+    2026-09-07 조회 기준 · 출처 농산물유통정보(KAMIS)
+  </div>
   
 </header>
 <input type="search" id="q" placeholder="품목 검색 (배추, 계란…)" autocomplete="off">
 <div class="chips"><button class="chip on" data-c="">전체</button><button class="chip" data-c="곡물">곡물</button><button class="chip" data-c="과일">과일</button><button class="chip" data-c="수산">수산</button><button class="chip" data-c="양념">양념</button><button class="chip" data-c="채소">채소</button></div>
 <div id="list"><a class="row" href="rice/" data-c="곡물"
    data-n="쌀">
-  <span class="top">
-    <span class="nm"><span class="n1">쌀</span><span
+  <span class="tile" aria-hidden="true">🌾</span>
+  <span class="mid">
+    <span class="top"><span class="n1">쌀</span><span
       class="n2">20kg</span></span>
-    <span class="p1">59,900원</span>
+    <span class="p2" style="color:#d97706"><i class="dot"
+      style="background:#d97706"></i>비싼 편 +24%</span>
   </span>
-  <span class="p2" style="color:#d97706"><i class="dot"
-    style="background:#d97706"></i>비싼 편 +24%</span>
+  <span class="right"><span class="p1">59,900원</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></span>
 </a><a class="row" href="pear/" data-c="과일"
    data-n="배">
-  <span class="top">
-    <span class="nm"><span class="n1">배</span><span
+  <span class="tile" aria-hidden="true">🍐</span>
+  <span class="mid">
+    <span class="top"><span class="n1">배</span><span
       class="n2">10개</span></span>
-    <span class="p1">50,000원</span>
+    <span class="p2" style="color:#dc2626"><i class="dot"
+      style="background:#dc2626"></i>아주 비쌈 +34%</span>
   </span>
-  <span class="p2" style="color:#dc2626"><i class="dot"
-    style="background:#dc2626"></i>아주 비쌈 +34%</span>
+  <span class="right"><span class="p1">50,000원</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></span>
 </a><a class="row" href="apple/" data-c="과일"
    data-n="사과">
-  <span class="top">
-    <span class="nm"><span class="n1">사과</span><span
+  <span class="tile" aria-hidden="true">🍎</span>
+  <span class="mid">
+    <span class="top"><span class="n1">사과</span><span
       class="n2">10개</span></span>
-    <span class="p1">27,900원</span>
+    <span class="p2" style="color:#6b7280"><i class="dot"
+      style="background:#6b7280"></i>보통 -2%</span>
   </span>
-  <span class="p2" style="color:#6b7280"><i class="dot"
-    style="background:#6b7280"></i>보통 -2%</span>
+  <span class="right"><span class="p1">27,900원</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></span>
 </a><a class="row" href="mackerel/" data-c="수산"
    data-n="고등어">
-  <span class="top">
-    <span class="nm"><span class="n1">고등어</span><span
+  <span class="tile" aria-hidden="true">🐟</span>
+  <span class="mid">
+    <span class="top"><span class="n1">고등어</span><span
       class="n2">1kg</span></span>
-    <span class="p1">4,790원</span>
+    <span class="p2" style="color:#6b7280"><i class="dot"
+      style="background:#6b7280"></i>보통 -3%</span>
   </span>
-  <span class="p2" style="color:#6b7280"><i class="dot"
-    style="background:#6b7280"></i>보통 -3%</span>
+  <span class="right"><span class="p1">4,790원</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></span>
 </a><a class="row" href="chili-powder/" data-c="양념"
    data-n="고춧가루">
-  <span class="top">
-    <span class="nm"><span class="n1">고춧가루</span><span
+  <span class="tile" aria-hidden="true">🌶️</span>
+  <span class="mid">
+    <span class="top"><span class="n1">고춧가루</span><span
       class="n2">1kg</span></span>
-    <span class="p1">36,900원</span>
+    <span class="p2" style="color:#dc2626"><i class="dot"
+      style="background:#dc2626"></i>아주 비쌈 +36%</span>
   </span>
-  <span class="p2" style="color:#dc2626"><i class="dot"
-    style="background:#dc2626"></i>아주 비쌈 +36%</span>
+  <span class="right"><span class="p1">36,900원</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></span>
 </a><a class="row" href="garlic/" data-c="양념"
    data-n="깐마늘">
-  <span class="top">
-    <span class="nm"><span class="n1">깐마늘</span><span
+  <span class="tile" aria-hidden="true">🧄</span>
+  <span class="mid">
+    <span class="top"><span class="n1">깐마늘</span><span
       class="n2">1kg</span></span>
-    <span class="p1">15,100원</span>
+    <span class="p2" style="color:#dc2626"><i class="dot"
+      style="background:#dc2626"></i>아주 비쌈 +42%</span>
   </span>
-  <span class="p2" style="color:#dc2626"><i class="dot"
-    style="background:#dc2626"></i>아주 비쌈 +42%</span>
+  <span class="right"><span class="p1">15,100원</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></span>
 </a><a class="row" href="potato/" data-c="채소"
    data-n="감자">
-  <span class="top">
-    <span class="nm"><span class="n1">감자</span><span
+  <span class="tile" aria-hidden="true">🥔</span>
+  <span class="mid">
+    <span class="top"><span class="n1">감자</span><span
       class="n2">100g</span></span>
-    <span class="p1">266원</span>
+    <span class="p2" style="color:#12946f"><i class="dot"
+      style="background:#12946f"></i>싼 편 -22%</span>
   </span>
-  <span class="p2" style="color:#12946f"><i class="dot"
-    style="background:#12946f"></i>싼 편 -22%</span>
+  <span class="right"><span class="p1">266원</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></span>
 </a><a class="row" href="green-onion/" data-c="채소"
    data-n="대파">
-  <span class="top">
-    <span class="nm"><span class="n1">대파</span><span
+  <span class="tile" aria-hidden="true">🌿</span>
+  <span class="mid">
+    <span class="top"><span class="n1">대파</span><span
       class="n2">1kg</span></span>
-    <span class="p1">3,060원</span>
+    <span class="p2" style="color:#0e7c66"><i class="dot"
+      style="background:#0e7c66"></i>아주 쌈 -45%</span>
   </span>
-  <span class="p2" style="color:#0e7c66"><i class="dot"
-    style="background:#0e7c66"></i>아주 쌈 -45%</span>
+  <span class="right"><span class="p1">3,060원</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></span>
 </a><a class="row" href="radish/" data-c="채소"
    data-n="무">
-  <span class="top">
-    <span class="nm"><span class="n1">무</span><span
+  <span class="tile" aria-hidden="true">🥕</span>
+  <span class="mid">
+    <span class="top"><span class="n1">무</span><span
       class="n2">1개</span></span>
-    <span class="p1">2,990원</span>
+    <span class="p2" style="color:#d97706"><i class="dot"
+      style="background:#d97706"></i>비싼 편 +25%</span>
   </span>
-  <span class="p2" style="color:#d97706"><i class="dot"
-    style="background:#d97706"></i>비싼 편 +25%</span>
+  <span class="right"><span class="p1">2,990원</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></span>
 </a><a class="row" href="napa-cabbage/" data-c="채소"
    data-n="배추">
-  <span class="top">
-    <span class="nm"><span class="n1">배추</span><span
+  <span class="tile" aria-hidden="true">🥬</span>
+  <span class="mid">
+    <span class="top"><span class="n1">배추</span><span
       class="n2">1포기</span></span>
-    <span class="p1">5,990원</span>
+    <span class="p2" style="color:#6b7280"><i class="dot"
+      style="background:#6b7280"></i>보통 -8%</span>
   </span>
-  <span class="p2" style="color:#6b7280"><i class="dot"
-    style="background:#6b7280"></i>보통 -8%</span>
+  <span class="right"><span class="p1">5,990원</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></span>
 </a><a class="row" href="onion/" data-c="채소"
    data-n="양파">
-  <span class="top">
-    <span class="nm"><span class="n1">양파</span><span
+  <span class="tile" aria-hidden="true">🧅</span>
+  <span class="mid">
+    <span class="top"><span class="n1">양파</span><span
       class="n2">1kg</span></span>
-    <span class="p1">1,590원</span>
+    <span class="p2" style="color:#12946f"><i class="dot"
+      style="background:#12946f"></i>싼 편 -23%</span>
   </span>
-  <span class="p2" style="color:#12946f"><i class="dot"
-    style="background:#12946f"></i>싼 편 -23%</span>
+  <span class="right"><span class="p1">1,590원</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></span>
 </a></div>
 <div class="empty" id="none" hidden>찾는 품목이 없어요.</div>
 <footer>
