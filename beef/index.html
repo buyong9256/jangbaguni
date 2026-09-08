@@ -1,0 +1,315 @@
+<!doctype html><html lang="ko"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>소고기 가격 — 이거 지금 사도 될까? | 오늘의 장바구니</title>
+<meta name="description" content="소고기 100g 15,414원. 예년과 견줄 자료가 아직 모자랍니다. 2026-09-07 기준.">
+<link rel="canonical" href="https://buyong9256.github.io/jangbaguni/beef/">
+<meta property="og:title" content="소고기 가격 — 이거 지금 사도 될까? | 오늘의 장바구니">
+<meta property="og:description" content="소고기 100g 15,414원. 예년과 견줄 자료가 아직 모자랍니다. 2026-09-07 기준.">
+<meta property="og:url" content="https://buyong9256.github.io/jangbaguni/beef/">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{--ink:#111827;--muted:#6b7280;--line:#e7eaee;--bg:#ffffff;--soft:#f5f6f8;
+      --card:#ffffff;--brand:#6d28d9;--radius:14px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+     font:15px/1.6 Pretendard,-apple-system,'Malgun Gothic',sans-serif;
+     -webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:560px;margin:0 auto;padding:0 16px 72px;min-height:100vh}
+header{padding:22px 0 12px}
+.today{display:flex;align-items:center;gap:6px;color:var(--muted);
+  font-size:13px;font-weight:500}
+.today svg{width:14px;height:14px}
+.brand{font-size:26px;font-weight:800;letter-spacing:-.04em;margin-top:6px}
+.tag{color:var(--muted);font-size:13.5px;margin-top:4px}
+.asof{display:flex;align-items:center;gap:6px;color:var(--muted);
+  font-size:12px;margin-top:12px}
+.asof svg{width:13px;height:13px;color:var(--brand)}
+input[type=search]{width:100%;padding:13px 15px;border:1px solid var(--line);
+  border-radius:13px;font:inherit;background:var(--soft);margin:14px 0 10px}
+input[type=search]:focus{outline:none;border-color:var(--brand);background:#fff}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:12px;
+  scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;padding:8px 16px;border:1px solid var(--line);
+  border-radius:999px;font-size:13.5px;color:var(--muted);background:var(--card);
+  cursor:pointer}
+.chip.on{background:var(--brand);border-color:var(--brand);color:#fff;
+  font-weight:600}
+/* 품목 하나 = 흰 카드 하나. 좌 이모지 타일, 가운데 이름·신호, 우 가격·화살표 */
+.row{display:flex;align-items:center;gap:12px;background:var(--card);
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:13px 14px;margin-bottom:10px}
+.row:active{background:#fafafa}
+.tile{flex:0 0 48px;width:48px;height:48px;border-radius:12px;
+  background:var(--soft);display:flex;align-items:center;justify-content:center;
+  font-size:24px;line-height:1}
+.row .mid{flex:1;min-width:0}
+.row .top{display:flex;align-items:baseline;gap:6px}
+.row .n1{font-weight:700;font-size:16px;letter-spacing:-.02em}
+.row .n2{color:var(--muted);font-size:12.5px}
+.row .p2{display:flex;align-items:center;gap:5px;font-size:12.5px;
+  margin-top:3px;font-weight:650}
+.row .right{flex:0 0 auto;display:flex;align-items:center;gap:6px}
+.row .p1{font-weight:750;font-size:16.5px;font-variant-numeric:tabular-nums;
+  letter-spacing:-.02em}
+.row .right svg{width:14px;height:14px;color:#c4c9d0}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;flex:none}
+.empty{color:var(--muted);text-align:center;padding:40px 0}
+.preview{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;
+  border-radius:10px;padding:11px 13px;font-size:12.5px;margin:14px 0 0;
+  line-height:1.5}
+.preview b{font-weight:700}
+/* 상세 */
+.back{display:inline-block;color:var(--muted);font-size:13px;padding:18px 0 6px}
+h1{font-size:22px;margin:0;letter-spacing:-.03em}
+h1 .hunit{color:var(--muted);font-size:14px;font-weight:500;margin-left:4px}
+.dhead{display:flex;gap:14px;align-items:flex-start;margin-top:8px}
+.dtile{flex:0 0 76px;width:76px;height:76px;border-radius:18px;
+  background:var(--soft);display:flex;align-items:center;justify-content:center;
+  font-size:40px;line-height:1}
+.dmeta{min-width:0;padding-top:2px}
+.dbadges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:7px}
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;
+  font-weight:650;padding:3px 9px;border-radius:999px}
+.badge.cat{background:#f0ecfe;color:var(--brand)}
+.badge.season{background:#eaf5ef;color:#2c7a52}
+.badge svg{width:11px;height:11px}
+.ddesc{color:var(--muted);font-size:13.5px;margin:6px 0 0;line-height:1.55}
+.pricebar{display:flex;align-items:center;gap:12px;margin-top:16px}
+.pricebar .sp{flex:1}
+/* 뒤로가기와 즐겨찾기를 한 줄에. 즐겨찾기는 값과 상관없는 동작이라
+   값 옆에 두면 판정 문장과 시선이 엉킨다. */
+.topbar{display:flex;align-items:center;gap:10px;padding:18px 0 6px}
+.topbar .back{padding:0;flex:1;min-width:0}
+/* 아이콘만 둔다. 이 줄의 주인공은 품목 이름이지 버튼이 아니다.
+   글씨가 없으므로 저장 여부는 '채워졌나'로 알린다 — 빈 북마크 / 채운 북마크.
+   손가락으로 누르는 것이라 34px 은 지킨다(더 줄이면 빗나간다). */
+.favbtn{display:inline-flex;align-items:center;justify-content:center;
+  width:34px;height:34px;padding:0;border:1px solid var(--line);
+  border-radius:9px;background:#fff;color:var(--muted);cursor:pointer}
+.favbtn svg{width:16px;height:16px;fill:none}
+.favbtn.on{color:var(--brand);border-color:var(--brand);background:#f5f2ff}
+.favbtn.on svg{fill:currentColor}
+.chead{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.cico{width:36px;height:36px;border-radius:50%;background:#f0ecfe;
+  color:var(--brand);display:flex;align-items:center;justify-content:center;
+  flex:0 0 36px}
+.cico svg{width:17px;height:17px}
+.ctx{min-width:0}
+.ctitle{font-size:14.5px;font-weight:750;letter-spacing:-.02em}
+.csub{font-size:11.5px;color:var(--muted);margin-top:1px}
+.chead .sp{flex:1}
+.seg{display:flex;gap:5px}
+.seg button{padding:5px 12px;font:inherit;font-size:12px;color:var(--muted);
+  background:#fff;border:1px solid var(--line);border-radius:999px;
+  cursor:pointer}
+/* 고른 것만 색으로 알린다 — 채우지 않고 테두리와 글자만 브랜드색으로.
+   면을 통째로 칠하면 그 밑의 쿠팡 버튼과 무게가 겹쳐 무엇을 눌러야 할지
+   흐려진다. */
+.seg button.on{background:#fff;border-color:var(--brand);color:var(--brand);
+  font-weight:700}
+.fk{display:flex;align-items:center;gap:7px;margin-bottom:8px}
+.fic{width:30px;height:30px;border-radius:50%;background:#f0ecfe;
+  color:var(--brand);display:flex;align-items:center;justify-content:center;
+  flex:0 0 30px;font-weight:800;font-size:14px}
+.fic svg{width:15px;height:15px}
+.fact .sub{font-size:11.5px;margin-top:3px;color:var(--muted);font-weight:500}
+.fact .sub b{font-weight:700}
+.rhead{display:flex;align-items:center;gap:6px;font-size:15px;font-weight:750;
+  margin:26px 0 3px;letter-spacing:-.02em}
+.rhead svg{width:15px;height:15px;color:var(--brand)}
+.rsub{color:var(--muted);font-size:12.5px;margin:0 0 12px}
+.rrow{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;
+  scrollbar-width:none}
+.rrow::-webkit-scrollbar{display:none}
+.rcard{flex:0 0 150px;background:var(--card);border:1px solid var(--line);
+  border-radius:13px;padding:12px;text-decoration:none}
+.rcard .remoji{width:44px;height:44px;border-radius:11px;background:var(--soft);
+  display:flex;align-items:center;justify-content:center;font-size:22px;
+  margin-bottom:9px}
+.rcard .rcat{display:inline-block;font-size:10.5px;font-weight:650;
+  color:var(--brand);background:#f0ecfe;border-radius:999px;padding:2px 7px;
+  margin-bottom:5px}
+.rcard .rname{font-size:14px;font-weight:700;letter-spacing:-.02em}
+.rcard .rdesc{font-size:11.5px;color:var(--muted);margin-top:3px;line-height:1.45}
+.unit{color:var(--muted);font-size:13px;margin-bottom:18px}
+.big{font-size:38px;font-weight:800;letter-spacing:-.04em;
+  font-variant-numeric:tabular-nums}
+.verdict{font-size:15px;margin:10px 0 4px;font-weight:600}
+.detail{color:var(--muted);font-size:13.5px}
+.card{background:#fff;border:1px solid var(--line);
+  border-radius:var(--radius);padding:16px;margin:20px 0}
+.spark{width:100%;height:auto;display:block}
+/* 맨 위 한 줄. 알리는 것이 목적이지 보여주는 것이 목적이 아니다 —
+   면도 테두리도 없이 작은 글씨로만 둔다. 다만 더 흐리게는 하지 않는다.
+   '소비자가 쉽게 인식할 수 있게' 라는 것이 고지의 요건이라, 읽히지 않으면
+   최상단에 두는 의미가 없어진다. */
+.disclosure{margin:0;padding:7px 2px 0;color:#a3a8b0;font-size:10.5px;
+  line-height:1.45}
+.stale{color:var(--muted);font-weight:500;margin-left:5px}
+.wkchip{margin-left:8px;font-size:12.5px;font-weight:700;white-space:nowrap}
+.wkchip .m{color:var(--muted);font-weight:500}
+.lastyear{margin:8px 0 2px;font-size:14px;font-weight:600;
+  color:#3730a3;background:#eef2ff;border-radius:10px;padding:9px 12px}
+.facts{display:flex;gap:10px;margin:18px 0}
+.fact{flex:1;background:#fff;border:1px solid #ddd6fe;
+  border-radius:var(--radius);padding:13px;min-width:0}
+.fact .k{color:var(--muted);font-size:12px}
+.fact .v{font-weight:750;font-size:16px;letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums}
+/* 꽉 찬 보라는 화면에서 혼자 튄다 — 카드들을 흰 배경 + 테두리로 바꾼 뒤로는
+   더 그렇다. 같은 결로 맞추되, 눌러야 할 것이라는 건 글자색과 화살표로 알린다.
+   광고처럼 보이면 이 사이트의 값어치인 '판단'이 같이 의심받는다. */
+.cta{display:flex;align-items:center;justify-content:center;gap:6px;
+  text-align:center;background:#fff;color:var(--brand);
+  border:1px solid var(--brand);padding:13px;border-radius:12px;
+  font-weight:700;margin-top:8px}
+.cta::after{content:"→";font-weight:600}
+.note{color:var(--muted);font-size:11.5px;margin-top:12px;line-height:1.55}
+footer{color:var(--muted);font-size:11.5px;padding:26px 0 0;
+  border-top:1px solid var(--line);margin-top:26px}
+</style></head><body><div class="wrap">
+<p class="disclosure">이 사이트는 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>
+<div class="topbar">
+  <a class="back" href="../">← 오늘의 장바구니</a>
+  <button class="favbtn" id="fav" data-slug="beef" type="button"
+    title="즐겨찾기" aria-label="즐겨찾기" aria-pressed="false">
+    <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+      stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+  </button>
+</div>
+
+<div class="dhead">
+  <span class="dtile" aria-hidden="true">🥩</span>
+  <div class="dmeta">
+    <div class="dbadges"><span class="badge cat">축산</span></div>
+    <h1>소고기<span class="hunit">100g</span></h1>
+
+  </div>
+</div>
+<div class="pricebar">
+  <div>
+    <div class="big">15,414원</div>
+    <div class="verdict" style="color:#9ca3af">
+      <i class="dot" style="background:#9ca3af"></i>자료 부족 
+      <span class="wkchip" style="color:#dc2626">▲ 8% <span class="m">지난주 대비</span></span></div>
+  </div>
+</div>
+
+<div class="detail">예년과 견줄 자료가 아직 모자랍니다. <span style="color:var(--muted)">
+  (2026-09-07 조사)</span></div>
+<div class="card">
+  <div class="chead">
+    <span class="cico" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round"><path d="M3 20h18"/><path d="m4 15 5-6 4 3 6-8"/></svg>
+    </span>
+    <div class="ctx">
+      <div class="ctitle">가격 추이</div>
+      <div class="csub" id="csub">최근 1개월 간 소고기 가격 변동 추이예요.</div>
+    </div>
+    <span class="sp"></span>
+    <div class="seg" id="pseg" data-name="소고기"><button data-p="7" data-l="1주">1주</button><button data-p="30" data-l="1개월" class=on>1개월</button><button data-p="90" data-l="3개월">3개월</button><button data-p="180" data-l="6개월">6개월</button></div>
+  </div>
+  <div class="chartp" data-p="7" hidden><svg class="spark" viewBox="0 0 680 220" role="img" aria-label="가격 추이">
+  <defs><linearGradient id="grad7" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#6d28d9" stop-opacity=".2"/>
+    <stop offset="1" stop-color="#6d28d9" stop-opacity="0"/>
+  </linearGradient></defs>
+  <line x1="64" x2="666" y1="158.2" y2="158.2" stroke="#eef0f4"/><text x="55" y="162.2" text-anchor="end" font-size="11" fill="#9aa1ab">14,500원</text><line x1="64" x2="666" y1="105.1" y2="105.1" stroke="#eef0f4"/><text x="55" y="109.1" text-anchor="end" font-size="11" fill="#9aa1ab">15,000원</text><line x1="64" x2="666" y1="51.9" y2="51.9" stroke="#eef0f4"/><text x="55" y="55.9" text-anchor="end" font-size="11" fill="#9aa1ab">15,500원</text>
+  <polygon points="64.0,192 64.0,174.9 164.3,174.5 264.7,79.4 365.0,72.3 465.3,64.5 565.7,63.1 666.0,61.1 666.0,192" fill="url(#grad7)"/>
+  <polyline points="64.0,174.9 164.3,174.5 264.7,79.4 365.0,72.3 465.3,64.5 565.7,63.1 666.0,61.1" fill="none" stroke="#6d28d9"
+    stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="666.0" cy="61.1" r="4.5" fill="#6d28d9"
+    stroke="#fff" stroke-width="2"/>
+  <rect x="580" y="23" width="86" height="24" rx="12" fill="#6d28d9"/><text x="623" y="39" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">15,414원</text><text x="64.0" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">9.1</text><text x="164.3" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">9.2</text><text x="264.7" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">9.3</text><text x="365.0" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">9.4</text><text x="465.3" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">9.5</text><text x="565.7" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">9.6</text>
+</svg></div><div class="chartp" data-p="30"><svg class="spark" viewBox="0 0 680 220" role="img" aria-label="가격 추이">
+  <defs><linearGradient id="grad30" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#6d28d9" stop-opacity=".2"/>
+    <stop offset="1" stop-color="#6d28d9" stop-opacity="0"/>
+  </linearGradient></defs>
+  <line x1="64" x2="666" y1="174.3" y2="174.3" stroke="#eef0f4"/><text x="55" y="178.3" text-anchor="end" font-size="11" fill="#9aa1ab">14,000원</text><line x1="64" x2="666" y1="94.2" y2="94.2" stroke="#eef0f4"/><text x="55" y="98.2" text-anchor="end" font-size="11" fill="#9aa1ab">15,000원</text>
+  <polygon points="64.0,192 64.0,80.5 84.8,74.8 105.5,75.2 126.3,73.9 147.0,112.5 167.8,112.0 188.6,109.7 209.3,109.4 230.1,107.8 250.8,113.8 271.6,122.4 292.3,174.9 313.1,169.1 333.9,165.4 354.6,162.0 375.4,163.2 396.1,165.2 416.9,165.6 437.7,163.6 458.4,159.6 479.2,147.3 499.9,141.9 520.7,143.9 541.4,146.8 562.2,146.5 583.0,74.8 603.7,69.6 624.5,63.6 645.2,62.6 666.0,61.1 666.0,192" fill="url(#grad30)"/>
+  <polyline points="64.0,80.5 84.8,74.8 105.5,75.2 126.3,73.9 147.0,112.5 167.8,112.0 188.6,109.7 209.3,109.4 230.1,107.8 250.8,113.8 271.6,122.4 292.3,174.9 313.1,169.1 333.9,165.4 354.6,162.0 375.4,163.2 396.1,165.2 416.9,165.6 437.7,163.6 458.4,159.6 479.2,147.3 499.9,141.9 520.7,143.9 541.4,146.8 562.2,146.5 583.0,74.8 603.7,69.6 624.5,63.6 645.2,62.6 666.0,61.1" fill="none" stroke="#6d28d9"
+    stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="666.0" cy="61.1" r="4.5" fill="#6d28d9"
+    stroke="#fff" stroke-width="2"/>
+  <rect x="580" y="23" width="86" height="24" rx="12" fill="#6d28d9"/><text x="623" y="39" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">15,414원</text><text x="64.0" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">8.9</text><text x="209.3" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">8.16</text><text x="354.6" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">8.23</text><text x="499.9" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">8.30</text><text x="645.2" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">9.6</text><text x="666.0" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">9.7</text>
+</svg></div><div class="chartp" data-p="90" hidden><svg class="spark" viewBox="0 0 680 220" role="img" aria-label="가격 추이">
+  <defs><linearGradient id="grad90" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#6d28d9" stop-opacity=".2"/>
+    <stop offset="1" stop-color="#6d28d9" stop-opacity="0"/>
+  </linearGradient></defs>
+  <line x1="64" x2="666" y1="174.3" y2="174.3" stroke="#eef0f4"/><text x="55" y="178.3" text-anchor="end" font-size="11" fill="#9aa1ab">14,000원</text><line x1="64" x2="666" y1="94.2" y2="94.2" stroke="#eef0f4"/><text x="55" y="98.2" text-anchor="end" font-size="11" fill="#9aa1ab">15,000원</text>
+  <polygon points="64.0,192 64.0,109.8 70.8,105.7 77.5,110.9 84.3,111.0 91.1,108.2 97.8,104.6 104.6,108.8 111.3,113.9 118.1,153.5 124.9,151.6 131.6,146.6 138.4,140.3 145.2,147.9 151.9,151.5 158.7,150.6 165.5,102.1 172.2,102.3 179.0,94.4 185.8,98.1 192.5,98.4 199.3,99.1 206.0,100.5 212.8,87.7 219.6,93.6 226.3,91.8 233.1,89.9 239.9,87.0 246.6,92.4 253.4,89.9 260.2,88.6 266.9,88.4 273.7,86.7 280.4,84.5 287.2,91.3 294.0,89.5 300.7,91.0 307.5,84.1 314.3,73.2 321.0,77.8 327.8,79.3 334.6,73.0 341.3,79.1 348.1,81.7 354.9,85.7 361.6,81.9 368.4,79.7 375.1,78.9 381.9,78.0 388.7,78.8 395.4,79.1 402.2,135.6 409.0,127.2 415.7,117.1 422.5,113.8 429.3,130.3 436.0,134.4 442.8,139.1 449.6,68.3 456.3,74.4 463.1,81.0 469.8,80.5 476.6,74.8 483.4,75.2 490.1,73.9 496.9,112.5 503.7,112.0 510.4,109.7 517.2,109.4 524.0,107.8 530.7,113.8 537.5,122.4 544.2,174.9 551.0,169.1 557.8,165.4 564.5,162.0 571.3,163.2 578.1,165.2 584.8,165.6 591.6,163.6 598.4,159.6 605.1,147.3 611.9,141.9 618.7,143.9 625.4,146.8 632.2,146.5 638.9,74.8 645.7,69.6 652.5,63.6 659.2,62.6 666.0,61.1 666.0,192" fill="url(#grad90)"/>
+  <polyline points="64.0,109.8 70.8,105.7 77.5,110.9 84.3,111.0 91.1,108.2 97.8,104.6 104.6,108.8 111.3,113.9 118.1,153.5 124.9,151.6 131.6,146.6 138.4,140.3 145.2,147.9 151.9,151.5 158.7,150.6 165.5,102.1 172.2,102.3 179.0,94.4 185.8,98.1 192.5,98.4 199.3,99.1 206.0,100.5 212.8,87.7 219.6,93.6 226.3,91.8 233.1,89.9 239.9,87.0 246.6,92.4 253.4,89.9 260.2,88.6 266.9,88.4 273.7,86.7 280.4,84.5 287.2,91.3 294.0,89.5 300.7,91.0 307.5,84.1 314.3,73.2 321.0,77.8 327.8,79.3 334.6,73.0 341.3,79.1 348.1,81.7 354.9,85.7 361.6,81.9 368.4,79.7 375.1,78.9 381.9,78.0 388.7,78.8 395.4,79.1 402.2,135.6 409.0,127.2 415.7,117.1 422.5,113.8 429.3,130.3 436.0,134.4 442.8,139.1 449.6,68.3 456.3,74.4 463.1,81.0 469.8,80.5 476.6,74.8 483.4,75.2 490.1,73.9 496.9,112.5 503.7,112.0 510.4,109.7 517.2,109.4 524.0,107.8 530.7,113.8 537.5,122.4 544.2,174.9 551.0,169.1 557.8,165.4 564.5,162.0 571.3,163.2 578.1,165.2 584.8,165.6 591.6,163.6 598.4,159.6 605.1,147.3 611.9,141.9 618.7,143.9 625.4,146.8 632.2,146.5 638.9,74.8 645.7,69.6 652.5,63.6 659.2,62.6 666.0,61.1" fill="none" stroke="#6d28d9"
+    stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="666.0" cy="61.1" r="4.5" fill="#6d28d9"
+    stroke="#fff" stroke-width="2"/>
+  <rect x="580" y="23" width="86" height="24" rx="12" fill="#6d28d9"/><text x="623" y="39" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">15,414원</text><text x="64.0" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">6.10</text><text x="212.8" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">7.2</text><text x="361.6" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">7.24</text><text x="510.4" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">8.15</text><text x="659.2" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">9.6</text><text x="666.0" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">9.7</text>
+</svg></div><div class="chartp" data-p="180" hidden><svg class="spark" viewBox="0 0 680 220" role="img" aria-label="가격 추이">
+  <defs><linearGradient id="grad180" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#6d28d9" stop-opacity=".2"/>
+    <stop offset="1" stop-color="#6d28d9" stop-opacity="0"/>
+  </linearGradient></defs>
+  <line x1="64" x2="666" y1="166.1" y2="166.1" stroke="#eef0f4"/><text x="55" y="170.1" text-anchor="end" font-size="11" fill="#9aa1ab">14,000원</text><line x1="64" x2="666" y1="91.8" y2="91.8" stroke="#eef0f4"/><text x="55" y="95.8" text-anchor="end" font-size="11" fill="#9aa1ab">15,000원</text>
+  <polygon points="64.0,192 64.0,167.8 67.4,170.4 70.7,166.3 74.1,165.2 77.5,170.6 80.8,174.6 84.2,174.9 87.5,137.4 90.9,135.3 94.3,130.5 97.6,127.8 101.0,126.5 104.4,129.0 107.7,150.8 111.1,156.7 114.4,156.0 117.8,155.9 121.2,153.8 124.5,135.0 127.9,138.0 131.3,143.1 134.6,139.9 138.0,136.7 141.4,138.5 144.7,142.0 148.1,141.1 151.4,145.1 154.8,145.6 158.2,133.6 161.5,130.7 164.9,124.6 168.3,123.3 171.6,121.8 175.0,123.8 178.3,126.7 181.7,118.9 185.1,116.0 188.4,114.8 191.8,116.5 195.2,110.6 198.5,110.8 201.9,113.4 205.3,106.5 208.6,116.0 212.0,114.6 215.3,114.0 218.7,118.9 222.1,121.4 225.4,122.7 228.8,121.1 232.2,124.5 235.5,126.2 238.9,121.8 242.2,116.8 245.6,115.7 249.0,117.7 252.3,164.0 255.7,162.3 259.1,159.3 262.4,156.1 265.8,163.0 269.2,160.2 272.5,161.4 275.9,144.2 279.2,140.8 282.6,136.0 286.0,138.0 289.3,135.1 292.7,140.4 296.1,144.1 299.4,93.9 302.8,93.8 306.1,91.9 309.5,92.1 312.9,87.8 316.2,92.0 319.6,96.9 323.0,137.1 326.3,139.0 329.7,136.6 333.1,134.4 336.4,140.0 339.8,142.2 343.1,142.0 346.5,110.5 349.9,109.3 353.2,105.7 356.6,102.1 360.0,104.9 363.3,104.1 366.7,106.2 370.0,102.4 373.4,107.3 376.8,107.4 380.1,104.8 383.5,101.5 386.9,105.3 390.2,110.1 393.6,146.9 396.9,145.1 400.3,140.4 403.7,134.5 407.0,141.7 410.4,145.0 413.8,144.1 417.1,99.2 420.5,99.3 423.9,92.0 427.2,95.5 430.6,95.7 433.9,96.4 437.3,97.7 440.7,85.7 444.0,91.2 447.4,89.6 450.8,87.8 454.1,85.1 457.5,90.1 460.8,87.8 464.2,86.6 467.6,86.4 470.9,84.8 474.3,82.8 477.7,89.1 481.0,87.4 484.4,88.9 487.8,82.5 491.1,72.4 494.5,76.6 497.8,77.9 501.2,72.1 504.6,77.8 507.9,80.2 511.3,84.0 514.7,80.4 518.0,78.3 521.4,77.6 524.7,76.8 528.1,77.5 531.5,77.8 534.8,130.2 538.2,122.4 541.6,113.1 544.9,110.0 548.3,125.3 551.7,129.1 555.0,133.4 558.4,67.8 561.7,73.5 565.1,79.6 568.5,79.1 571.8,73.9 575.2,74.2 578.6,73.0 581.9,108.8 585.3,108.3 588.6,106.2 592.0,105.9 595.4,104.4 598.7,109.9 602.1,118.0 605.5,166.7 608.8,161.3 612.2,157.8 615.6,154.6 618.9,155.8 622.3,157.6 625.6,158.0 629.0,156.2 632.4,152.4 635.7,141.1 639.1,136.1 642.5,137.9 645.8,140.6 649.2,140.3 652.5,73.9 655.9,68.9 659.3,63.5 662.6,62.5 666.0,61.1 666.0,192" fill="url(#grad180)"/>
+  <polyline points="64.0,167.8 67.4,170.4 70.7,166.3 74.1,165.2 77.5,170.6 80.8,174.6 84.2,174.9 87.5,137.4 90.9,135.3 94.3,130.5 97.6,127.8 101.0,126.5 104.4,129.0 107.7,150.8 111.1,156.7 114.4,156.0 117.8,155.9 121.2,153.8 124.5,135.0 127.9,138.0 131.3,143.1 134.6,139.9 138.0,136.7 141.4,138.5 144.7,142.0 148.1,141.1 151.4,145.1 154.8,145.6 158.2,133.6 161.5,130.7 164.9,124.6 168.3,123.3 171.6,121.8 175.0,123.8 178.3,126.7 181.7,118.9 185.1,116.0 188.4,114.8 191.8,116.5 195.2,110.6 198.5,110.8 201.9,113.4 205.3,106.5 208.6,116.0 212.0,114.6 215.3,114.0 218.7,118.9 222.1,121.4 225.4,122.7 228.8,121.1 232.2,124.5 235.5,126.2 238.9,121.8 242.2,116.8 245.6,115.7 249.0,117.7 252.3,164.0 255.7,162.3 259.1,159.3 262.4,156.1 265.8,163.0 269.2,160.2 272.5,161.4 275.9,144.2 279.2,140.8 282.6,136.0 286.0,138.0 289.3,135.1 292.7,140.4 296.1,144.1 299.4,93.9 302.8,93.8 306.1,91.9 309.5,92.1 312.9,87.8 316.2,92.0 319.6,96.9 323.0,137.1 326.3,139.0 329.7,136.6 333.1,134.4 336.4,140.0 339.8,142.2 343.1,142.0 346.5,110.5 349.9,109.3 353.2,105.7 356.6,102.1 360.0,104.9 363.3,104.1 366.7,106.2 370.0,102.4 373.4,107.3 376.8,107.4 380.1,104.8 383.5,101.5 386.9,105.3 390.2,110.1 393.6,146.9 396.9,145.1 400.3,140.4 403.7,134.5 407.0,141.7 410.4,145.0 413.8,144.1 417.1,99.2 420.5,99.3 423.9,92.0 427.2,95.5 430.6,95.7 433.9,96.4 437.3,97.7 440.7,85.7 444.0,91.2 447.4,89.6 450.8,87.8 454.1,85.1 457.5,90.1 460.8,87.8 464.2,86.6 467.6,86.4 470.9,84.8 474.3,82.8 477.7,89.1 481.0,87.4 484.4,88.9 487.8,82.5 491.1,72.4 494.5,76.6 497.8,77.9 501.2,72.1 504.6,77.8 507.9,80.2 511.3,84.0 514.7,80.4 518.0,78.3 521.4,77.6 524.7,76.8 528.1,77.5 531.5,77.8 534.8,130.2 538.2,122.4 541.6,113.1 544.9,110.0 548.3,125.3 551.7,129.1 555.0,133.4 558.4,67.8 561.7,73.5 565.1,79.6 568.5,79.1 571.8,73.9 575.2,74.2 578.6,73.0 581.9,108.8 585.3,108.3 588.6,106.2 592.0,105.9 595.4,104.4 598.7,109.9 602.1,118.0 605.5,166.7 608.8,161.3 612.2,157.8 615.6,154.6 618.9,155.8 622.3,157.6 625.6,158.0 629.0,156.2 632.4,152.4 635.7,141.1 639.1,136.1 642.5,137.9 645.8,140.6 649.2,140.3 652.5,73.9 655.9,68.9 659.3,63.5 662.6,62.5 666.0,61.1" fill="none" stroke="#6d28d9"
+    stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="666.0" cy="61.1" r="4.5" fill="#6d28d9"
+    stroke="#fff" stroke-width="2"/>
+  <rect x="580" y="23" width="86" height="24" rx="12" fill="#6d28d9"/><text x="623" y="39" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">15,414원</text><text x="64.0" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">3.12</text><text x="212.0" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">4.25</text><text x="360.0" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">6.8</text><text x="507.9" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">7.22</text><text x="655.9" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">9.4</text><text x="666.0" y="211" text-anchor="middle" font-size="11" fill="#9aa1ab">9.7</text>
+</svg></div>
+</div>
+<div class="facts">
+  <div class="fact"><div class="fk"><span class="fic" aria-hidden="true">₩</span><span class="k">예년 같은 때</span></div>
+    <div class="v">-</div><div class="sub">비교 자료 부족</div></div>
+  <div class="fact"><div class="fk"><span class="fic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l5.5 6 4-3L21 17"/><path d="M15 17h6v-6"/></svg></span><span class="k">최근 1년 최저</span></div>
+    <div class="v">11,604원</div>
+    <div class="sub">(2025.11)</div></div>
+  <div class="fact"><div class="fk"><span class="fic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5.5-6 4 3L21 7"/><path d="M15 7h6v6"/></svg></span><span class="k">최근 1년 최고</span></div>
+    <div class="v">15,414원</div>
+    <div class="sub">(2026.09)</div></div>
+</div>
+<a class="cta" href="https://www.coupang.com/np/search?q=%EC%86%8C%EA%B3%A0%EA%B8%B0" target="_blank" rel="noopener">쿠팡에서 소고기 보기</a>
+
+<footer>
+  최근 5년 같은 달의 월평균 1개년과 견줬습니다.
+  <br>
+  출처: <a href="https://www.kamis.or.kr" target="_blank" rel="noopener">
+  농산물유통정보(KAMIS)</a> 소매 조사값. 실제 판매가와 다를 수 있어요.
+</footer>
+
+<script>
+(function(){
+var seg=document.getElementById('pseg');
+var segs=[].slice.call(document.querySelectorAll('#pseg button'));
+var csub=document.getElementById('csub');
+segs.forEach(function(b){b.onclick=function(){
+  segs.forEach(function(x){x.classList.toggle('on',x===b);});
+  [].slice.call(document.querySelectorAll('.chartp')).forEach(function(c){
+    c.hidden = c.getAttribute('data-p')!==b.getAttribute('data-p');});
+  if(csub&&seg){csub.textContent='최근 '+b.getAttribute('data-l')+' 간 '
+    +seg.getAttribute('data-name')+' 가격 변동 추이예요.';}
+};});
+var fav=document.getElementById('fav');
+if(fav){var KEY='favs',slug=fav.getAttribute('data-slug'),list=[];
+try{list=JSON.parse(localStorage.getItem(KEY))||[]}catch(e){}
+function upd(){var on=list.indexOf(slug)>=0;
+  fav.classList.toggle('on',on);
+  /* 글씨가 없으니 상태는 아이콘이 말해야 한다 — 채워지면 저장된 것.
+     눈으로 못 보는 사람에게는 aria 로 알린다. */
+  fav.setAttribute('aria-pressed',on?'true':'false');
+  fav.setAttribute('title',on?'저장됨 — 누르면 해제':'즐겨찾기에 저장');
+  fav.setAttribute('aria-label',on?'즐겨찾기 해제':'즐겨찾기에 저장');}
+fav.onclick=function(){var i=list.indexOf(slug);
+  if(i>=0)list.splice(i,1);else list.push(slug);
+  try{localStorage.setItem(KEY,JSON.stringify(list))}catch(e){}
+  upd();};
+upd();}
+})();
+</script>
+</div></body></html>
