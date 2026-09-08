@@ -132,6 +132,11 @@ h1 .hunit{color:var(--muted);font-size:14px;font-weight:500;margin-left:4px}
 .card{background:var(--soft);border:1px solid var(--line);
   border-radius:var(--radius);padding:16px;margin:20px 0}
 .spark{width:100%;height:auto;display:block}
+.stale{color:var(--muted);font-weight:500;margin-left:5px}
+.wkchip{margin-left:8px;font-size:12.5px;font-weight:700;white-space:nowrap}
+.wkchip .m{color:var(--muted);font-weight:500}
+.lastyear{margin:8px 0 2px;font-size:14px;font-weight:600;
+  color:#3730a3;background:#eef2ff;border-radius:10px;padding:9px 12px}
 .facts{display:flex;gap:10px;margin:18px 0}
 .fact{flex:1;background:var(--soft);border:1px solid var(--line);
   border-radius:var(--radius);padding:13px;min-width:0}
@@ -158,7 +163,8 @@ footer{color:var(--muted);font-size:11.5px;padding:26px 0 0;
   <div>
     <div class="big">50,000원</div>
     <div class="verdict" style="color:#dc2626">
-      <i class="dot" style="background:#dc2626"></i>아주 비쌈 +34%</div>
+      <i class="dot" style="background:#dc2626"></i>아주 비쌈 +34%
+      <span class="wkchip" style="color:#12946f">▼ 3% <span class="m">지난주 대비</span></span></div>
   </div>
   <span class="sp"></span>
   <button class="favbtn" id="fav" data-slug="pear" type="button">
@@ -167,6 +173,7 @@ footer{color:var(--muted);font-size:11.5px;padding:26px 0 0;
     <span>즐겨찾기</span>
   </button>
 </div>
+<div class="lastyear">작년 8월엔 34,290원이었어요 — 지금이 46% 더 비싸요.</div>
 <div class="detail">예년 같은 달보다 34% 비쌉니다. 보통 11월이 가장 쌉니다. <span style="color:var(--muted)">
   (2026-08-31 조사)</span></div>
 <div class="card">
@@ -234,7 +241,7 @@ footer{color:var(--muted);font-size:11.5px;padding:26px 0 0;
 </div>
 <div class="facts">
   <div class="fact"><div class="fk"><span class="fic" aria-hidden="true">₩</span><span class="k">예년 같은 때</span></div>
-    <div class="v">37,228원</div><div class="sub" style="color:#12946f"><b>▼ 3%</b> 지난주 대비</div></div>
+    <div class="v">37,228원</div><div class="sub" style="color:#dc2626"><b>▲ 34%</b> 지금이 더 비싸요</div></div>
   <div class="fact"><div class="fk"><span class="fic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l5.5 6 4-3L21 17"/><path d="M15 17h6v-6"/></svg></span><span class="k">최근 1년 최저</span></div>
     <div class="v">19,800원</div>
     <div class="sub">(2025.11)</div></div>
